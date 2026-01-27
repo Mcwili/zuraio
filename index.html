@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="de" id="htmlLang">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuraio - Own Your Data</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/Logo Zuraio.svg" alt="Zuraio Logo" class="logo-image">
+                </div>
+                <nav class="nav">
+                    <a href="#vorhaben" class="nav-link" data-i18n="nav.projects">Vorhaben</a>
+                    <a href="#prinzipien" class="nav-link" data-i18n="nav.principles">Prinzipien</a>
+                    <a href="#kontakt" class="nav-link" data-i18n="nav.contact">Kontakt</a>
+                    <div class="language-selector">
+                        <select id="languageSelect" class="language-select">
+                            <option value="de">DE</option>
+                            <option value="en">EN</option>
+                            <option value="pt-BR">PT-BR</option>
+                        </select>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="animated-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span class="badge-icon">✨</span>
+                        <span data-i18n="hero.badge">Own Your Data</span>
+                    </div>
+                    <h2 class="hero-title">
+                        <span class="title-highlight">Zuraio</span> <span data-i18n="hero.title.makes">macht</span> 
+                        <span class="title-bold" data-i18n="hero.title.bold">Datenhoheit praktisch.</span>
+                    </h2>
+                    <p class="hero-description" data-i18n="hero.description">
+                        Wir bauen Lösungen rund um Daten, Security und AI, damit Unternehmen 
+                        ihre Informationen kontrolliert nutzen können. Klar, nachvollziehbar 
+                        und ohne unnötige Komplexität.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#kontakt" class="btn btn-primary">
+                            <span data-i18n="hero.button.contact">Kontakt aufnehmen</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:info@zuraio.ch" class="btn btn-secondary">info@zuraio.ch</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-illustration">
+                        <!-- Animated Data Flow -->
+                        <svg class="data-flow" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#8CC63F;stop-opacity:0.8" />
+                                    <stop offset="100%" style="stop-color:#7AB832;stop-opacity:0.4" />
+                                </linearGradient>
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <!-- Animated paths -->
+                            <path class="flow-path path-1" d="M50,200 Q150,100 250,150 T450,200" 
+                                  fill="none" stroke="url(#dataGradient)" stroke-width="3" 
+                                  stroke-dasharray="10,5" opacity="0.6"/>
+                            <path class="flow-path path-2" d="M50,250 Q200,150 350,200 T450,250" 
+                                  fill="none" stroke="url(#dataGradient)" stroke-width="3" 
+                                  stroke-dasharray="10,5" opacity="0.4"/>
+                            <circle class="data-node node-1" cx="100" cy="180" r="12" fill="#8CC63F" filter="url(#glow)"/>
+                            <circle class="data-node node-2" cx="250" cy="150" r="15" fill="#8CC63F" filter="url(#glow)"/>
+                            <circle class="data-node node-3" cx="400" cy="200" r="12" fill="#8CC63F" filter="url(#glow)"/>
+                        </svg>
+                        
+                        <!-- Modern AI Network Visualization -->
+                        <div class="modern-visualization" id="modernVisualization">
+                            <!-- Central Hub -->
+                            <div class="central-hub">
+                                <div class="hub-core">
+                                    <div class="core-inner"></div>
+                                    <div class="core-matrix">
+                                        <div class="matrix-cell"></div>
+                                        <div class="matrix-cell"></div>
+                                        <div class="matrix-cell"></div>
+                                        <div class="matrix-cell"></div>
+                                    </div>
+                                </div>
+                                <div class="hub-ring ring-1"></div>
+                                <div class="hub-ring ring-2"></div>
+                                <div class="hub-ring ring-3"></div>
+                                <div class="hub-ring ring-4"></div>
+                            </div>
+                            
+                            <!-- Primary Network Nodes (Layer 1) -->
+                            <div class="network-node node-primary node-a">
+                                <div class="node-core">
+                                    <div class="node-inner"></div>
+                                </div>
+                                <div class="node-pulse"></div>
+                                <div class="node-connections">
+                                    <div class="connection-dot dot-1"></div>
+                                    <div class="connection-dot dot-2"></div>
+                                    <div class="connection-dot dot-3"></div>
+                                </div>
+                            </div>
+                            <div class="network-node node-primary node-b">
+                                <div class="node-core">
+                                    <div class="node-inner"></div>
+                                </div>
+                                <div class="node-pulse"></div>
+                                <div class="node-connections">
+                                    <div class="connection-dot dot-1"></div>
+                                    <div class="connection-dot dot-2"></div>
+                                    <div class="connection-dot dot-3"></div>
+                                </div>
+                            </div>
+                            <div class="network-node node-primary node-c">
+                                <div class="node-core">
+                                    <div class="node-inner"></div>
+                                </div>
+                                <div class="node-pulse"></div>
+                                <div class="node-connections">
+                                    <div class="connection-dot dot-1"></div>
+                                    <div class="connection-dot dot-2"></div>
+                                    <div class="connection-dot dot-3"></div>
+                                </div>
+                            </div>
+                            <div class="network-node node-primary node-d">
+                                <div class="node-core">
+                                    <div class="node-inner"></div>
+                                </div>
+                                <div class="node-pulse"></div>
+                                <div class="node-connections">
+                                    <div class="connection-dot dot-1"></div>
+                                    <div class="connection-dot dot-2"></div>
+                                    <div class="connection-dot dot-3"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Secondary Network Nodes (Layer 2) -->
+                            <div class="network-node node-secondary node-e">
+                                <div class="node-core"></div>
+                                <div class="node-pulse"></div>
+                            </div>
+                            <div class="network-node node-secondary node-f">
+                                <div class="node-core"></div>
+                                <div class="node-pulse"></div>
+                            </div>
+                            <div class="network-node node-secondary node-g">
+                                <div class="node-core"></div>
+                                <div class="node-pulse"></div>
+                            </div>
+                            <div class="network-node node-secondary node-h">
+                                <div class="node-core"></div>
+                                <div class="node-pulse"></div>
+                            </div>
+                            
+                            <!-- Tertiary Micro Nodes -->
+                            <div class="micro-node micro-1"></div>
+                            <div class="micro-node micro-2"></div>
+                            <div class="micro-node micro-3"></div>
+                            <div class="micro-node micro-4"></div>
+                            <div class="micro-node micro-5"></div>
+                            <div class="micro-node micro-6"></div>
+                            
+                            <!-- Complex Connection Mesh -->
+                            <svg class="connection-lines" viewBox="0 0 480 400">
+                                <defs>
+                                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8CC63F;stop-opacity:0.7" />
+                                        <stop offset="50%" style="stop-color:#8CC63F;stop-opacity:0.2" />
+                                        <stop offset="100%" style="stop-color:#8CC63F;stop-opacity:0.7" />
+                                    </linearGradient>
+                                    <linearGradient id="secondaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8CC63F;stop-opacity:0.4" />
+                                        <stop offset="100%" style="stop-color:#8CC63F;stop-opacity:0.1" />
+                                    </linearGradient>
+                                    <filter id="lineGlow">
+                                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                        <feMerge>
+                                            <feMergeNode in="coloredBlur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <!-- Primary connections -->
+                                <path class="connection-line line-primary line-1" d="M240,200 L120,120" stroke="url(#lineGradient)" stroke-width="2.5" fill="none" filter="url(#lineGlow)"/>
+                                <path class="connection-line line-primary line-2" d="M240,200 L360,120" stroke="url(#lineGradient)" stroke-width="2.5" fill="none" filter="url(#lineGlow)"/>
+                                <path class="connection-line line-primary line-3" d="M240,200 L120,280" stroke="url(#lineGradient)" stroke-width="2.5" fill="none" filter="url(#lineGlow)"/>
+                                <path class="connection-line line-primary line-4" d="M240,200 L360,280" stroke="url(#lineGradient)" stroke-width="2.5" fill="none" filter="url(#lineGlow)"/>
+                                <!-- Secondary mesh connections -->
+                                <path class="connection-line line-secondary line-5" d="M120,120 L180,80" stroke="url(#secondaryGradient)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                                <path class="connection-line line-secondary line-6" d="M360,120 L300,80" stroke="url(#secondaryGradient)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                                <path class="connection-line line-secondary line-7" d="M120,280 L180,320" stroke="url(#secondaryGradient)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                                <path class="connection-line line-secondary line-8" d="M360,280 L300,320" stroke="url(#secondaryGradient)" stroke-width="1.5" fill="none" opacity="0.5"/>
+                                <path class="connection-line line-secondary line-9" d="M120,120 L120,280" stroke="url(#secondaryGradient)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                                <path class="connection-line line-secondary line-10" d="M360,120 L360,280" stroke="url(#secondaryGradient)" stroke-width="1.5" fill="none" opacity="0.4"/>
+                                <!-- Inter-node connections -->
+                                <path class="connection-line line-inter line-11" d="M120,120 L360,120" stroke="url(#secondaryGradient)" stroke-width="1" fill="none" opacity="0.3" stroke-dasharray="3,3"/>
+                                <path class="connection-line line-inter line-12" d="M120,280 L360,280" stroke="url(#secondaryGradient)" stroke-width="1" fill="none" opacity="0.3" stroke-dasharray="3,3"/>
+                            </svg>
+                            
+                            <!-- Data Flow Particles -->
+                            <div class="data-particles">
+                                <div class="data-particle particle-1"></div>
+                                <div class="data-particle particle-2"></div>
+                                <div class="data-particle particle-3"></div>
+                                <div class="data-particle particle-4"></div>
+                                <div class="data-particle particle-5"></div>
+                                <div class="data-particle particle-6"></div>
+                                <div class="data-particle particle-7"></div>
+                                <div class="data-particle particle-8"></div>
+                            </div>
+                            
+                            <!-- Scientific Grid Overlay -->
+                            <div class="scientific-grid"></div>
+                            
+                            <!-- Quantum State Indicators -->
+                            <div class="quantum-indicator q-ind-1"></div>
+                            <div class="quantum-indicator q-ind-2"></div>
+                            <div class="quantum-indicator q-ind-3"></div>
+                        </div>
+                        
+                        <!-- Floating Icons -->
+                        <div class="floating-icons">
+                            <div class="icon-float icon-1">
+                                <div class="icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        <path d="M9 12l2 2 4-4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="icon-float icon-2">
+                                <div class="icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="icon-float icon-3">
+                                <div class="icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                        <path d="M2 17l10 5 10-5"/>
+                                        <path d="M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="icon-float icon-4">
+                                <div class="icon-wrapper">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wofür wir stehen Section -->
+    <section id="prinzipien" class="features">
+        <div class="container">
+            <h2 class="section-title" data-i18n="features.title">Wofür wir stehen</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-bg"></div>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 9h6v6H9z"/>
+                                <path d="M3 9h6M15 9h6M9 3v6M9 15v6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.data.title">Datenhoheit</h3>
+                    <p class="feature-description" data-i18n="features.data.description">
+                        Du entscheidest, wo Daten liegen, wer Zugriff hat und wie sie verwendet werden. Volle Kontrolle über Speicherorte, Datenflüsse und Verarbeitung. Keine ungewollte Weitergabe an Dritte. Transparente Nachverfolgbarkeit aller Datenzugriffe und -verwendungen. Unternehmen bleiben Eigentümer ihrer Daten und behalten die Entscheidungsgewalt über jede Nutzung.
+                    </p>
+                    <div class="feature-decoration"></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-bg"></div>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.security.title">Sicherheit</h3>
+                    <p class="feature-description" data-i18n="features.security.description">
+                        Rechte, Protokollierung und sichere Prozesse sind nicht optional, sondern Standard. Umfassende Verschlüsselung, rollenbasierte Zugriffskontrolle und detaillierte Audit-Logs. Regelmässige Sicherheitsprüfungen und Compliance mit Schweizer Datenschutzbestimmungen. Schutz vor unbefugtem Zugriff und Datenverlust durch bewährte Sicherheitsarchitekturen.
+                    </p>
+                    <div class="feature-decoration"></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-bg"></div>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 9h6v6H9z"/>
+                                <path d="M12 3v6M12 15v6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.platform.title">Was wir aktuell aufbauen</h3>
+                    <p class="feature-description" data-i18n="features.platform.description">
+                        Wir entwickeln eine modulare AI Plattform, die eigene und externe AI Systeme als Agents integrieren kann. Fokus liegt auf Kontrolle, Transparenz und klaren Rollen. Unternehmen behalten die volle Hoheit über Daten, Prozesse und Entscheidungen und können AI gezielt und verantwortungsvoll einsetzen.
+                    </p>
+                    <div class="feature-decoration"></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-bg"></div>
+                        <div class="feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="feature-title" data-i18n="features.target.title">Für wen</h3>
+                    <p class="feature-description" data-i18n="features.target.description">
+                        Für schweizer KMUs und Teams, die mit sensiblen Informationen arbeiten und AI nutzen wollen. Geeignet für Organisationen, die Wert auf klare Regeln, Verantwortung, Datensouveränität und nachvollziehbare Prozesse legen.
+                    </p>
+                    <div class="feature-decoration"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="kontakt" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-i18n="contact.title">Kontakt</h2>
+            <div class="contact-grid">
+                <a href="mailto:info@zuraio.ch" class="contact-card contact-card-link">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3 class="contact-title" data-i18n="contact.email.title">E-Mail</h3>
+                    <span class="contact-link">info@zuraio.ch</span>
+                </a>
+                <a href="mailto:info@zuraio.ch" class="contact-card contact-card-link">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                    </div>
+                    <h3 class="contact-title" data-i18n="contact.web.title">Web</h3>
+                    <p class="contact-text" data-i18n="contact.web.text">
+                        Schreib uns per E-Mail. Wir melden uns rasch zurück und sprechen mit dir 
+                        über deine Anliegen.
+                    </p>
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Zürich,+Bändliweg+20,+8048+Zürich" target="_blank" rel="noopener noreferrer" class="contact-card contact-card-link">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#8CC63F" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="contact-title" data-i18n="contact.location.title">Standort</h3>
+                    <p class="contact-text" data-i18n="contact.location.text">Zürich, Bändliweg 20, 8048 Zürich</p>
+                </a>
+            </div>
+            <p class="contact-footer-text" data-i18n="contact.footer.text">
+                Schreib uns per E-Mail. Wir melden uns rasch zurück und sprechen mit dir 
+                über deine Anliegen.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="assets/Logo zuraio weiss.svg" alt="Zuraio Logo" class="footer-logo-image">
+                    </div>
+                    <p class="footer-description" data-i18n="footer.description">
+                        Lösungen für Datenhoheit, Security und AI. 
+                        Klar, nachvollziehbar und ohne unnötige Komplexität.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-heading" data-i18n="footer.nav.title">Navigation</h4>
+                        <ul class="footer-nav">
+                            <li><a href="#vorhaben" class="footer-link" data-i18n="nav.projects">Vorhaben</a></li>
+                            <li><a href="#prinzipien" class="footer-link" data-i18n="nav.principles">Prinzipien</a></li>
+                            <li><a href="#kontakt" class="footer-link" data-i18n="nav.contact">Kontakt</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading" data-i18n="footer.contact.title">Kontakt</h4>
+                        <ul class="footer-nav">
+                            <li><a href="mailto:info@zuraio.ch" class="footer-link">info@zuraio.ch</a></li>
+                            <li><span class="footer-text" data-i18n="footer.contact.switzerland">Schweiz</span></li>
+                            <li><span class="footer-text" data-i18n="footer.contact.remote">Remote & vor Ort</span></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 class="footer-heading" data-i18n="footer.legal.title">Rechtliches</h4>
+                        <ul class="footer-nav">
+                            <li><a href="#impressum" class="footer-link" data-i18n="footer.legal.imprint">Impressum</a></li>
+                            <li><a href="#datenschutz" class="footer-link" data-i18n="footer.legal.privacy">Datenschutz</a></li>
+                            <li><a href="#agb" class="footer-link" data-i18n="footer.legal.terms">AGB</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright" data-i18n="footer.copyright">© 2025 Zuraio. Alle Rechte vorbehalten.</p>
+                <div class="footer-social">
+                    <a href="mailto:info@zuraio.ch" class="footer-email">info@zuraio.ch</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
