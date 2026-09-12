@@ -5,7 +5,7 @@ import { initDemoStatic } from './demo-static.js';
 import { initControlParticles } from './control-particles.js?v=20260766';
 import { initAuditParticles } from './audit-particles.js?v=20260768';
 import { initScatteredKnowledge, renderScatteredKnowledge } from './scattered-knowledge.js';
-import { initMarquee } from './integrations-marquee.js';
+import { initMarquee } from './integrations-marquee.js?v=20260913';
 import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
 import { initLogoWatermarks } from './logo-watermarks.js';

@@ -1,4 +1,4 @@
-import { INTEGRATIONS, getIntegrationLabel, getIntegrationAlt } from './integrations-data.js';
+import { INTEGRATIONS, getIntegrationLabel, getIntegrationAlt } from './integrations-data.js?v=20260913';
 import { getLocale } from './i18n.js';
 import { assetHref } from './path-locale.js';
 import { isInternalReviewMode, renderStatusBadge } from './internal-review.js';

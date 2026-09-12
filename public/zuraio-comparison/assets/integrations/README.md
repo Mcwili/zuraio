@@ -48,6 +48,7 @@ Use these filenames (or aliases listed in `scripts/sync-integration-logos.mjs`):
 | `sage.svg` | Sage |
 | `proffix.svg` | Proffix |
 | `klara.svg` | Klara |
+| `apis-mcp.png` | APIs & MCP (marquee — custom connector icon) |
 
 Run `npm run sync:integration-logos` again after adding files.
 
