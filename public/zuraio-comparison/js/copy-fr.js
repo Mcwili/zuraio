@@ -454,6 +454,15 @@ export const pages = {
       headingEmphasis: 'concret',
       lede: 'Nous examinons avec vous vos outils actuels, les connaissances de votre entreprise et vos exigences en matière de contrôle des données. Nous identifions ensuite les domaines dans lesquels Zuraio peut vous aider en priorité.',
     },
+    form: {
+      sending: 'Envoi en cours…',
+      success: 'Merci. Nous avons bien reçu votre demande et vous répondrons généralement sous quelques jours ouvrables.',
+      error: 'Une erreur s’est produite. Veuillez réessayer ou nous écrire à',
+      errorNetwork: 'Impossible de joindre le serveur. Vérifiez votre connexion ou écrivez-nous à',
+      fallback: 'Ce formulaire n’est pas encore connecté. Veuillez nous écrire à',
+      validationMessageOrInterest: 'Veuillez ajouter un message ou choisir un intérêt principal.',
+      validationEmail: 'Veuillez saisir une adresse e-mail valide.',
+    },
   },
   resources: {
     title: 'Ressources — Zuraio',

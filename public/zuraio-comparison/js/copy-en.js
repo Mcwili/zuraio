@@ -511,6 +511,15 @@ export const pages = {
     title: 'Contact — Zuraio',
     description: 'Contact Zuraio to discuss your tools, company knowledge and data-control requirements.',
     hero: { marker: 'Contact', heading: 'Find the first practical use case for your company.', headingEmphasis: 'practical', lede: 'We will look at your current tools, company knowledge and data-control requirements, then identify where Zuraio could help first.' },
+    form: {
+      sending: 'Sending…',
+      success: 'Thank you. We received your enquiry and will respond within a few business days.',
+      error: 'Something went wrong. Please try again or email us directly at',
+      errorNetwork: 'We could not reach the server. Please check your connection or email us at',
+      fallback: 'This form is not yet connected. Please email us at',
+      validationMessageOrInterest: 'Please add a message or select a main interest.',
+      validationEmail: 'Please enter a valid email address.',
+    },
   },
   resources: {
     title: 'Resources — Zuraio',

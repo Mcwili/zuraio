@@ -40,6 +40,7 @@ jobs:
           CANONICAL_BASE: https://zuraio.ch
           SITE_BASE_PATH: /zuraio
           SITEMAP_LASTMOD: '2026-08-20'
+          CONTACT_API_URL: ${{ vars.CONTACT_API_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

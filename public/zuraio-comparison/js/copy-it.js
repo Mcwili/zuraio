@@ -454,6 +454,15 @@ export const pages = {
       headingEmphasis: 'pratico',
       lede: 'Esaminiamo insieme gli strumenti che utilizzate, la conoscenza aziendale e i requisiti relativi al controllo dei dati. Individuiamo quindi gli ambiti in cui Zuraio può aiutarvi per primi.',
     },
+    form: {
+      sending: 'Invio in corso…',
+      success: 'Grazie. Abbiamo ricevuto la vostra richiesta e di solito rispondiamo entro pochi giorni lavorativi.',
+      error: 'Qualcosa è andato storto. Riprovate o scriveteci a',
+      errorNetwork: 'Impossibile contattare il server. Controllate la connessione o scriveteci a',
+      fallback: 'Questo modulo non è ancora collegato. Scriveteci a',
+      validationMessageOrInterest: 'Aggiungete un messaggio o selezionate un interesse principale.',
+      validationEmail: 'Inserite un indirizzo e-mail valido.',
+    },
   },
   resources: {
     title: 'Risorse — Zuraio',

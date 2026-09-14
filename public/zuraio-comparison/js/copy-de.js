@@ -454,6 +454,15 @@ export const pages = {
       headingEmphasis: 'praktischen',
       lede: 'Gemeinsam betrachten wir Ihre bestehenden Tools, Ihr Unternehmenswissen und Ihre Anforderungen an die Datenkontrolle. Anschliessend zeigen wir Ihnen, wo Zuraio zuerst helfen kann.',
     },
+    form: {
+      sending: 'Wird gesendet…',
+      success: 'Vielen Dank. Wir haben Ihre Anfrage erhalten und melden uns in der Regel innerhalb weniger Werktage.',
+      error: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns an',
+      errorNetwork: 'Der Server war nicht erreichbar. Bitte prüfen Sie Ihre Verbindung oder schreiben Sie uns an',
+      fallback: 'Dieses Formular ist noch nicht verbunden. Bitte schreiben Sie uns an',
+      validationMessageOrInterest: 'Bitte ergänzen Sie eine Nachricht oder wählen Sie ein Hauptinteresse.',
+      validationEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+    },
   },
   resources: {
     title: 'Ressourcen — Zuraio',

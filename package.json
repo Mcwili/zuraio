@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "node scripts/optimize-hero-images.mjs && node scripts/optimize-team-images.mjs && vite build && node scripts/set-main-site.mjs && node scripts/prerender-site.mjs && node scripts/generate-seo-files.mjs",
+    "build": "node scripts/optimize-hero-images.mjs && node scripts/optimize-team-images.mjs && vite build && node scripts/set-main-site.mjs && node scripts/inject-contact-api-url.mjs && node scripts/prerender-site.mjs && node scripts/generate-seo-files.mjs",
     "build:app": "vite build && node scripts/set-main-site.mjs",
     "dev": "vite",
     "preview": "vite preview",
