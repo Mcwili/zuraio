@@ -38,7 +38,7 @@ jobs:
         run: npm run build
         env:
           CANONICAL_BASE: https://zuraio.ch
-          SITE_BASE_PATH: /zuraio
+          SITE_BASE_PATH: ''
           SITEMAP_LASTMOD: '2026-08-20'
           CONTACT_API_URL: ${{ vars.CONTACT_API_URL }}
 
