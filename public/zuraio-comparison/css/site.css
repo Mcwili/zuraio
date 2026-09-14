@@ -3618,6 +3618,13 @@ footer.site-footer {
   display: none;
 }
 
+.form-notice--error,
+#form-notice.form-notice--error {
+  background: #fdf2f2;
+  border-color: #f0caca;
+  color: #7a2e2e;
+}
+
 /* Resource cards */
 .resource-grid {
   display: grid;

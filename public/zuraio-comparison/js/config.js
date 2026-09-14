@@ -25,6 +25,9 @@ export const INTERNAL_REVIEW_MODE = false;
 /** When true, show decorative logo-derived background watermarks. */
 export const LOGO_WATERMARKS_ENABLED = true;
 
+/** Public Cloudflare Worker URL for contact form POST (injected at build from CONTACT_API_URL). */
+export const CONTACT_API_URL = '';
+
 export const SITE = {
   name: 'Zuraio',
   tagline: 'AI for Swiss companies that need control of their data.',

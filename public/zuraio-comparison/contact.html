@@ -45,6 +45,10 @@
           <p class="mono">Development notice: this form is not yet connected to a backend. Submissions are handled client-side only until integration is complete.</p>
         </div>
 
+        <noscript>
+          <p class="form-trust">Send your enquiry to <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>.</p>
+        </noscript>
+
         <form id="contact-form" class="contact-form reveal" novalidate>
           <div class="form-row">
             <label for="name">Name <span aria-hidden="true">*</span></label>
@@ -95,11 +99,16 @@
             <textarea id="message" name="message" rows="5" maxlength="2000"></textarea>
           </div>
 
+          <div class="form-row visually-hidden" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
           <p class="form-trust mono">Your enquiry will be handled confidentially.</p>
 
           <button type="submit" class="btn btn-primary btn-lg">Send enquiry</button>
 
-          <p id="form-notice" class="form-notice" hidden role="status"></p>
+          <p id="form-notice" class="form-notice" tabindex="-1" hidden role="status" aria-live="polite"></p>
         </form>
       </div>
 

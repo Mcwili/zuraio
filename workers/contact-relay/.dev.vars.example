@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local `npm run dev` (never commit .dev.vars)
+PA_WEBHOOK_URL=https://example.logic.azure.com/workflows/.../triggers/manual/paths/invoke?api-version=...
+PA_API_KEY=your-shared-secret
+ENVIRONMENT=dev

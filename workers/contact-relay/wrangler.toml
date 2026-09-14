@@ -1,0 +1,9 @@
+name = "zuraio-contact-relay"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+[vars]
+ENVIRONMENT = "production"
+
+# Optional: route when zuraio.ch DNS is on Cloudflare
+# routes = [{ pattern = "api.zuraio.ch/api/contact", zone_name = "zuraio.ch" }]
