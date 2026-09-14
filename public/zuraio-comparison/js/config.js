@@ -25,8 +25,8 @@ export const INTERNAL_REVIEW_MODE = false;
 /** When true, show decorative logo-derived background watermarks. */
 export const LOGO_WATERMARKS_ENABLED = true;
 
-/** Public Cloudflare Worker URL for contact form POST (injected at build from CONTACT_API_URL). */
-export const CONTACT_API_URL = '';
+/** Public contact relay URL (Worker). Build may override via CONTACT_API_URL env / public-endpoint.txt. */
+export const CONTACT_API_URL = 'https://api.zuraio.ch/api/contact';
 
 export const SITE = {
   name: 'Zuraio',

@@ -9,11 +9,13 @@ on:
       - '.github/workflows/deploy-contact-worker.yml'
   workflow_dispatch:
 
-# Set repository variable CF_WORKER_DEPLOY=true and secret CLOUDFLARE_API_TOKEN to enable.
+# Secrets: CLOUDFLARE_API_TOKEN (Workers Scripts Edit).
+# Optional (sync to Worker on deploy): PA_WEBHOOK_URL, PA_API_KEY — same values as Power Automate HTTP trigger.
+# Variable: CF_WORKER_DEPLOY=true enables push-to-main deploys (workflow_dispatch always runs).
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: vars.CF_WORKER_DEPLOY == 'true'
+    if: github.event_name == 'workflow_dispatch' || vars.CF_WORKER_DEPLOY == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,8 +31,36 @@ jobs:
         working-directory: workers/contact-relay
         run: npm install
 
-      - name: Deploy Worker
+      - name: Sync Power Automate secrets to Worker
         working-directory: workers/contact-relay
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: npx wrangler deploy
+          PA_WEBHOOK_URL: ${{ secrets.PA_WEBHOOK_URL }}
+          PA_API_KEY: ${{ secrets.PA_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${PA_WEBHOOK_URL:-}" ] || [ -z "${PA_API_KEY:-}" ]; then
+            echo "PA_WEBHOOK_URL / PA_API_KEY not in GitHub secrets — skip sync (ok if already set via wrangler secret put)."
+            exit 0
+          fi
+          printf '%s' "$PA_WEBHOOK_URL" | npx wrangler secret put PA_WEBHOOK_URL
+          printf '%s' "$PA_API_KEY" | npx wrangler secret put PA_API_KEY
+
+      - name: Deploy Worker
+        id: deploy
+        working-directory: workers/contact-relay
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          npx wrangler deploy 2>&1 | tee deploy.log
+          WORKER_HOST=$(grep -oE 'https://zuraio-contact-relay\.[a-zA-Z0-9-]+\.workers\.dev' deploy.log | head -1 || true)
+          if [ -z "$WORKER_HOST" ]; then
+            WORKER_HOST=$(grep -oE 'https://zuraio-contact-relay\.workers\.dev' deploy.log | head -1 || true)
+          fi
+          echo "worker_host=$WORKER_HOST" >> "$GITHUB_OUTPUT"
+          echo "Contact relay URL: ${WORKER_HOST}/api/contact"
+
+      - name: Remind Mcwili Pages variable
+        run: |
+          echo "::notice::Set Mcwili/zuraio Actions variable CONTACT_API_URL to ${{ steps.deploy.outputs.worker_host }}/api/contact (or keep https://api.zuraio.ch/api/contact if custom domain route is enabled), then run Deploy to GitHub Pages."

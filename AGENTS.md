@@ -36,4 +36,4 @@ Before finishing a change, run `npm run build` to verify the production build su
 
 ## Contact form relay
 
-Book-a-demo submissions use a Cloudflare Worker in `workers/contact-relay/` (see its README). Set GitHub repository variable **`CONTACT_API_URL`** on **Mcwili/zuraio** to the deployed Worker URL (`https://…workers.dev/api/contact`) so production builds wire the form. Power Automate secrets stay in Cloudflare (`wrangler secret put`), not in this repo.
+Book-a-demo submissions use a Cloudflare Worker in `workers/contact-relay/` (see its README). Production builds default to `https://api.zuraio.ch/api/contact` via `public-endpoint.txt` / `config.js`; override with GitHub variable **`CONTACT_API_URL`** on **Mcwili/zuraio**. Full checklist: **`docs/CONTACT-FORM-GO-LIVE.md`** (Worker deploy + PA secrets + Pages redeploy).

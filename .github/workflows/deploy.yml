@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      contact_api_url:
+        description: 'Optional override for CONTACT_API_URL for this build only'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -40,7 +45,7 @@ jobs:
           CANONICAL_BASE: https://zuraio.ch
           SITE_BASE_PATH: ''
           SITEMAP_LASTMOD: '2026-08-20'
-          CONTACT_API_URL: ${{ vars.CONTACT_API_URL }}
+          CONTACT_API_URL: ${{ inputs.contact_api_url || vars.CONTACT_API_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
