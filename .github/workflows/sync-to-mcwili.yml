@@ -1,0 +1,50 @@
+# Push Yevucee/zuraio main to Mcwili/zuraio production (requires your collaborator PAT).
+# Setup: GitHub → Yevucee/zuraio → Settings → Secrets → MCWILI_PUSH_TOKEN
+# (fine-grained PAT: Mcwili/zuraio contents read+write, or classic repo scope)
+# Run: Actions → Sync to Mcwili production → Run workflow
+
+name: Sync to Mcwili production
+
+on:
+  workflow_dispatch:
+    inputs:
+      backup_legacy:
+        description: 'Update legacy/mcwili-old-site from current Mcwili main before push'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to Mcwili/zuraio
+        env:
+          MCWILI_TOKEN: ${{ secrets.MCWILI_PUSH_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${MCWILI_TOKEN}" ]; then
+            echo "::error::Add repository secret MCWILI_PUSH_TOKEN (PAT with push access to Mcwili/zuraio)."
+            exit 1
+          fi
+          git remote add mcwili "https://x-access-token:${MCWILI_TOKEN}@github.com/Mcwili/zuraio.git"
+          git fetch mcwili main || true
+
+          if [ "${{ inputs.backup_legacy }}" = "true" ] && git show-ref --verify --quiet refs/remotes/mcwili/main; then
+            git push mcwili mcwili/main:refs/heads/legacy/mcwili-old-site
+            echo "Updated legacy/mcwili-old-site from previous Mcwili main."
+          fi
+
+          git push mcwili HEAD:refs/heads/main --force-with-lease=main
+          echo "Pushed current main to Mcwili/zuraio main."

@@ -1,6 +1,17 @@
 # Push production site to Mcwili/zuraio
 
-Run these on your machine (logged in as a **collaborator** on `Mcwili/zuraio`). The cloud agent cannot push there.
+The cloud agent cannot push to `Mcwili/zuraio` (403). Use **either** the GitHub Action (easiest) **or** local git.
+
+## Option A — GitHub Action (recommended)
+
+1. Create a **fine-grained PAT** (your GitHub user) with **Contents: Read and write** on `Mcwili/zuraio`, or a classic token with `repo` access to that repository.
+2. **Yevucee/zuraio → Settings → Secrets and variables → Actions → New secret:** `MCWILI_PUSH_TOKEN` = the PAT.
+3. **Actions → Sync to Mcwili production → Run workflow** (leave “backup legacy” on `true` the first time).
+4. On **Mcwili/zuraio**: **Settings → Pages → Source: GitHub Actions**, then run **Deploy to GitHub Pages** on `main` (or wait for push if you add the same workflow there later).
+
+## Option B — Local git
+
+Run these on your machine (logged in as a **collaborator** on `Mcwili/zuraio`).
 
 ## 1. Backup old site (once)
 
