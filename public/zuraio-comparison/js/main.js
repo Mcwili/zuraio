@@ -44,6 +44,7 @@ function boot() {
   initMarquee();
   initFaq();
   initRoutesDiagram();
+  initContactForm();
 }
 
 boot();
