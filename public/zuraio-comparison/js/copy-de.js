@@ -1,9 +1,9 @@
 export const heroOptions = [
   {
-    headline: 'Ein digitaler Executive Assistant für alle Mitarbeitenden.',
-    emphasis: 'Executive Assistant',
+    headline: 'Ihr digitaler Assistent für den ganzen Betrieb.',
+    emphasis: 'digitaler Assistent',
     paragraph:
-      'Zuraio stellt allen Mitarbeitenden einen intelligenten Assistenten zur Seite, der Informationen findet, Fragen beantwortet, Dokumente vorbereitet und sie bei ihrer täglichen Arbeit unterstützt.',
+      'Zuraio findet Informationen, beantwortet Fragen, bereitet Dokumente vor und bildet Ihre internen Prozesse digital ab. So entlastet der KI-Assistent Ihr Team im Arbeitsalltag und schafft mehr Zeit für das Wesentliche.',
     cta: 'Lernen Sie Ihren KI-Assistenten kennen',
     ctaHref: 'contact.html',
     imageAlt: 'Zuraio AI Hub mit Anwendungen und Chat-Oberfläche.',
