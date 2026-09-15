@@ -41,7 +41,25 @@ export function getLocale() {
   if (fromPath) return fromPath;
   const stored = localStorage.getItem(LOCALE_KEY);
   if (isSupportedLocale(stored)) return stored;
-  return 'en';
+  return 'de';
+}
+
+/** On production, first visit to unprefixed URLs opens German (`/de/…`). Respects saved language. */
+export function ensureDefaultLocaleRoute() {
+  const host = location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') return;
+
+  const params = new URLSearchParams(location.search);
+  if (params.get('lang')) return;
+
+  if (getLocaleFromPath()) return;
+
+  const stored = localStorage.getItem(LOCALE_KEY);
+  const preferred = isSupportedLocale(stored) ? stored : 'de';
+  if (preferred === 'en') return;
+
+  const page = getCurrentPageFile();
+  location.replace(`${langHrefForLocale(page, preferred, SITE_BASE)}${location.hash}`);
 }
 
 export function setLocale(locale) {

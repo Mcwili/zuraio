@@ -10,7 +10,7 @@ import { initFaq } from './faq-accordion.js';
 import { initInternalReview, refreshInternalReview, isInternalReviewMode } from './internal-review.js';
 import { initLogoWatermarks } from './logo-watermarks.js';
 import { initRoutesDiagram, refreshRoutesDiagram } from './routes-diagram.js?v=20260820';
-import { applyAllTranslations, getLocale, initLocaleSwitcher } from './i18n.js?v=20260821b';
+import { applyAllTranslations, ensureDefaultLocaleRoute, getLocale, initLocaleSwitcher } from './i18n.js?v=20260915';
 import { initContactForm } from './contact-form.js?v=20260914';
 
 const TECHNICAL_PAGES = new Set([
@@ -24,6 +24,8 @@ const TECHNICAL_PAGES = new Set([
 ]);
 
 const LEGAL_PAGES = new Set(['impressum', 'privacy', 'terms', 'cookies']);
+
+ensureDefaultLocaleRoute();
 
 document.documentElement.lang = getLocale();
 
