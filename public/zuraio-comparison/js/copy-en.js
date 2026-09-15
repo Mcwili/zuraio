@@ -185,15 +185,15 @@ export const home = {
       heading: 'How Zuraio compares',
       chatgpt: {
         name: 'ChatGPT',
-        body: 'General-purpose AI for questions, writing and analysis. Company context is provided in the conversation or through separately configured connections.',
+        body: 'General-purpose generative AI for questions, writing and analysis. Company knowledge and business processes are not covered automatically, but have to be supplied through prompts, files or additional connections. Generated answers have to be checked for accuracy.',
       },
       copilot: {
         name: 'Microsoft Copilot',
-        body: 'AI integrated into the Microsoft ecosystem. Its scope and access are determined by the Microsoft products, licences, permissions and configuration in use.',
+        body: 'Generative AI inside the Microsoft world. Its value depends on the products, licences, permissions and configuration in use. Processes and data outside Microsoft 365 have to be connected separately. The content it generates also has to be reviewed.',
       },
       zuraio: {
         name: 'Zuraio',
-        body: 'A company-controlled assistant that connects approved knowledge, business systems and a choice of AI models, with sources and employee review.',
+        body: 'Controlled AI for your business. Zuraio maps your actual business processes and works with approved company knowledge instead of freely generated content. Roles and permissions make sure employees only see the information intended for them. Your data stays inside your company.',
       },
     },
     without: {

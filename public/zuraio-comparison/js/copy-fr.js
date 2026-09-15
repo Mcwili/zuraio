@@ -190,15 +190,15 @@ export const home = {
       heading: 'Zuraio en comparaison',
       chatgpt: {
         name: 'ChatGPT',
-        body: 'Une IA généraliste pour les questions, la rédaction et l’analyse. Le contexte de l’entreprise est fourni dans la conversation ou relié par des connexions configurées séparément.',
+        body: 'Une IA générative généraliste pour les questions, la rédaction et l’analyse. Les connaissances et les processus métier de l’entreprise ne sont pas repris automatiquement : ils doivent être fournis par des saisies, des fichiers ou des connexions supplémentaires. Les réponses générées doivent être vérifiées sur le fond.',
       },
       copilot: {
         name: 'Microsoft Copilot',
-        body: 'Une IA intégrée à l’écosystème Microsoft. Son périmètre et ses accès sont déterminés par les produits Microsoft, les licences, les autorisations et la configuration en place.',
+        body: 'Une IA générative au sein de l’univers Microsoft. Son utilité dépend des produits, des licences, des autorisations et de la configuration en place. Les processus et les données situés en dehors de Microsoft 365 doivent être reliés séparément. Les contenus produits doivent eux aussi être contrôlés.',
       },
       zuraio: {
         name: 'Zuraio',
-        body: 'Un assistant sous le contrôle de l’entreprise, qui relie les connaissances approuvées, les systèmes métier et différents modèles d’IA, avec indication des sources et validation par les collaborateurs.',
+        body: 'Une IA maîtrisée pour votre entreprise. Zuraio reproduit vos processus métier concrets et travaille avec les connaissances approuvées de l’entreprise plutôt qu’avec des contenus générés librement. Les rôles et les droits garantissent que les collaborateurs ne voient que les informations qui leur sont destinées. Vos données restent dans votre entreprise.',
       },
     },
     without: {
