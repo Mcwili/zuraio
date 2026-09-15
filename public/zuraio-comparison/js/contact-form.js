@@ -4,7 +4,7 @@ import { isInternalReviewMode } from './internal-review.js';
 
 function formMessages() {
   const copy = getCopy();
-  const form = copy.contact?.form ?? {};
+  const form = copy.pages?.contact?.form ?? copy.contact?.form ?? {};
   return {
     sending: form.sending ?? 'Sending…',
     success: form.success ?? 'Thank you. We received your enquiry and will respond within a few business days.',
@@ -84,9 +84,13 @@ async function submitToRelay(payload) {
   return { ok: res.ok && data?.ok === true, status: res.status, data };
 }
 
+/** In-memory guard — prerender must not rely on data-contact-form-ready on the static HTML. */
+let formReady = false;
+
 export function initContactForm() {
   const form = document.getElementById('contact-form');
-  if (!form || form.dataset.contactFormReady) return;
+  if (!form || formReady) return;
+  formReady = true;
   form.dataset.contactFormReady = 'true';
   form.dataset.formTs = String(Date.now());
 

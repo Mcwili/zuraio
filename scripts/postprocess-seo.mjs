@@ -350,6 +350,8 @@ function stripClientRuntimeState(html) {
   return html
     .replace(/\sdata-routes-observer-bound="[^"]*"/g, '')
     .replace(/\sdata-routes-animated="[^"]*"/g, '')
+    .replace(/\sdata-contact-form-ready="[^"]*"/g, '')
+    .replace(/\sdata-form-ts="[^"]*"/g, '')
     .replace(/(<path[^>]*data-route-path="[^"]+"[^>]*)\sstyle="stroke-dasharray:[^"]*"/g, '$1');
 }
 
