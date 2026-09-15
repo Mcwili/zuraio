@@ -33,11 +33,18 @@ export function initMarquee() {
     const inner = track.querySelector('.marquee-inner');
     if (!inner) return;
 
-    const html = INTEGRATIONS.map((item) => renderIntegrationItem(item, locale)).join('');
+    const items = INTEGRATIONS.map((item) => renderIntegrationItem(item, locale)).join('');
+    // The second copy exists only so the scroll animation can loop seamlessly at
+    // translateX(-50%). It is hidden from assistive tech, and CSS drops it when the
+    // animation is off (prefers-reduced-motion), where the list wraps and the
+    // duplicate would otherwise be plainly visible.
+    const html =
+      `<span class="marquee-copy">${items}</span>` +
+      `<span class="marquee-copy marquee-copy--clone" aria-hidden="true">${items}</span>`;
 
     if (!track.dataset.marqueeReady) {
       track.dataset.marqueeReady = 'true';
-      inner.innerHTML = html + html;
+      inner.innerHTML = html;
       track.addEventListener('mouseenter', () => track.classList.add('is-paused'));
       track.addEventListener('mouseleave', () => track.classList.remove('is-paused'));
       track.addEventListener('focusin', () => track.classList.add('is-paused'));
@@ -45,7 +52,7 @@ export function initMarquee() {
       return;
     }
 
-    inner.innerHTML = html + html;
+    inner.innerHTML = html;
   });
 }
 

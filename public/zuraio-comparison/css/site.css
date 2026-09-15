@@ -2154,6 +2154,12 @@ h3 .headline-em {
   animation-play-state: paused;
 }
 
+/* Each half of the marquee. display:contents keeps the items direct flex
+   children of .marquee-inner, so the scrolling layout is unchanged. */
+.marquee-copy {
+  display: contents;
+}
+
 .marquee-track {
   display: flex;
   align-items: center;
@@ -6305,6 +6311,12 @@ footer.site-footer {
     width: 100%;
     justify-content: center;
     gap: 10px;
+  }
+
+  /* No animation means no seamless loop to feed, and the wrapped list would
+     show every integration twice. */
+  .marquee-copy--clone {
+    display: none;
   }
 
   .marquee-track {
