@@ -190,15 +190,15 @@ export const home = {
       heading: 'Zuraio im Vergleich',
       chatgpt: {
         name: 'ChatGPT',
-        body: 'Allgemeine KI für Fragen, Texte und Analysen. Unternehmenskontext wird im Gespräch bereitgestellt oder über separat eingerichtete Verbindungen eingebunden.',
+        body: 'Allgemeine generative KI für Fragen, Texte und Analysen. Unternehmenswissen und Geschäftsprozesse sind nicht automatisch abgebildet, sondern müssen über Eingaben, Dateien oder zusätzliche Verbindungen bereitgestellt werden. Generierte Antworten müssen fachlich geprüft werden.',
       },
       copilot: {
         name: 'Microsoft Copilot',
-        body: 'KI innerhalb des Microsoft-Ökosystems. Umfang und Zugriff richten sich nach den eingesetzten Microsoft-Produkten, Lizenzen, Berechtigungen und der Konfiguration.',
+        body: 'Generative KI innerhalb der Microsoft-Welt. Der Nutzen hängt von den eingesetzten Produkten, Lizenzen, Berechtigungen und der Konfiguration ab. Prozesse und Daten ausserhalb von Microsoft 365 müssen zusätzlich angebunden werden. Auch die erzeugten Inhalte müssen kontrolliert werden.',
       },
       zuraio: {
         name: 'Zuraio',
-        body: 'Ein vom Unternehmen kontrollierter Assistent, der freigegebenes Wissen, Geschäftssysteme und verschiedene KI-Modelle verbindet – mit Quellenangaben und Prüfung durch Mitarbeitende.',
+        body: 'Kontrollierte KI für Ihren Betrieb. Zuraio bildet Ihre konkreten Geschäftsprozesse ab und arbeitet mit freigegebenem Firmenwissen statt mit frei generierten Inhalten. Rollen und Rechte stellen sicher, dass Mitarbeitende nur die für sie bestimmten Informationen sehen. Ihre Daten bleiben in Ihrem Unternehmen.',
       },
     },
     without: {
