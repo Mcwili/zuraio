@@ -31,8 +31,8 @@
     <div class="contact-grid">
 
       <div class="contact-form-wrap">
-        <span class="marker">Enquiry form</span>
-        <h2>Tell us about your company.</h2>
+        <span class="marker" data-i18n="extra.contact.k30">Enquiry form</span>
+        <h2 data-i18n="extra.contact.k01">Tell us about your company.</h2>
 
         <!--
           INTEGRATION POINT (development):
@@ -42,97 +42,97 @@
           Method: POST
         -->
         <div class="todo-block" data-internal-only>
-          <p class="mono">Development notice: this form is not yet connected to a backend. Submissions are handled client-side only until integration is complete.</p>
+          <p class="mono" data-i18n="extra.contact.k02">Development notice: this form is not yet connected to a backend. Submissions are handled client-side only until integration is complete.</p>
         </div>
 
         <noscript>
-          <p class="form-trust">Send your enquiry to <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>.</p>
+          <p class="form-trust" data-i18n="extra.contact.k28" data-i18n-html="true">Send your enquiry to <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>.</p>
         </noscript>
 
         <form id="contact-form" class="contact-form reveal" novalidate>
           <div class="form-row">
-            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <label for="name" data-i18n="extra.contact.k31" data-i18n-html="true">Name <span aria-hidden="true">*</span></label>
             <input type="text" id="name" name="name" required autocomplete="name" minlength="2" maxlength="120">
           </div>
 
           <div class="form-row">
-            <label for="company">Company <span aria-hidden="true">*</span></label>
+            <label for="company" data-i18n="extra.contact.k32" data-i18n-html="true">Company <span aria-hidden="true">*</span></label>
             <input type="text" id="company" name="company" required autocomplete="organization" minlength="2" maxlength="200">
           </div>
 
           <div class="form-row">
-            <label for="role">Role</label>
+            <label for="role" data-i18n="extra.contact.k34">Role</label>
             <input type="text" id="role" name="role" autocomplete="organization-title" maxlength="120">
           </div>
 
           <div class="form-row">
-            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <label for="email" data-i18n="extra.contact.k33" data-i18n-html="true">Email <span aria-hidden="true">*</span></label>
             <input type="email" id="email" name="email" required autocomplete="email" maxlength="254">
           </div>
 
           <div class="form-row">
-            <label for="phone">Phone</label>
+            <label for="phone" data-i18n="extra.contact.k35">Phone</label>
             <input type="tel" id="phone" name="phone" autocomplete="tel" maxlength="30" pattern="[+]?[0-9\s\-().]{7,30}">
           </div>
 
           <div class="form-row">
-            <label for="company-size">Company size</label>
+            <label for="company-size" data-i18n="extra.contact.k36">Company size</label>
             <input type="text" id="company-size" name="company-size" placeholder="e.g. 50–100 employees" maxlength="80">
           </div>
 
           <div class="form-row">
-            <label for="interest">Main interest</label>
+            <label for="interest" data-i18n="extra.contact.k37">Main interest</label>
             <select id="interest" name="interest">
-              <option value="">Select an option</option>
-              <option value="meeting-preparation">Meeting preparation</option>
-              <option value="email-followup">Email and follow-up</option>
-              <option value="knowledge-search">Internal knowledge search</option>
-              <option value="reports-summaries">Reports and summaries</option>
-              <option value="data-control">Data control</option>
-              <option value="technical-architecture">Technical architecture</option>
-              <option value="starter-partner">Starter partner discussion</option>
+              <option value="" data-i18n="extra.contact.k03">Select an option</option>
+              <option value="meeting-preparation" data-i18n="extra.contact.k38">Meeting preparation</option>
+              <option value="email-followup" data-i18n="extra.contact.k04">Email and follow-up</option>
+              <option value="knowledge-search" data-i18n="extra.contact.k05">Internal knowledge search</option>
+              <option value="reports-summaries" data-i18n="extra.contact.k06">Reports and summaries</option>
+              <option value="data-control" data-i18n="extra.contact.k39">Data control</option>
+              <option value="technical-architecture" data-i18n="extra.contact.k40">Technical architecture</option>
+              <option value="starter-partner" data-i18n="extra.contact.k07">Starter partner discussion</option>
             </select>
           </div>
 
           <div class="form-row">
-            <label for="message">Message</label>
+            <label for="message" data-i18n="extra.contact.k41">Message</label>
             <textarea id="message" name="message" rows="5" maxlength="2000"></textarea>
           </div>
 
           <div class="form-row visually-hidden" aria-hidden="true">
-            <label for="website">Website</label>
+            <label for="website" data-i18n="extra.contact.k42">Website</label>
             <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
           </div>
 
-          <p class="form-trust mono">Your enquiry will be handled confidentially.</p>
+          <p class="form-trust mono" data-i18n="extra.contact.k08">Your enquiry will be handled confidentially.</p>
 
-          <button type="submit" class="btn btn-primary btn-lg">Send enquiry</button>
+          <button type="submit" class="btn btn-primary btn-lg" data-i18n="extra.contact.k43">Send enquiry</button>
 
           <p id="form-notice" class="form-notice" tabindex="-1" hidden role="status" aria-live="polite"></p>
         </form>
       </div>
 
       <aside class="contact-paths">
-        <span class="marker">Three ways to reach us</span>
-        <h2>Contact paths.</h2>
+        <span class="marker" data-i18n="extra.contact.k09">Three ways to reach us</span>
+        <h2 data-i18n="extra.contact.k44">Contact paths.</h2>
 
         <article class="pcard reveal">
-          <h3>1. Book a demo</h3>
-          <p>Use the form to request a private demo. We typically respond within a few business days.</p>
+          <h3 data-i18n="extra.contact.k10">1. Book a demo</h3>
+          <p data-i18n="extra.contact.k11">Use the form to request a private demo. We typically respond within a few business days.</p>
         </article>
 
         <article class="pcard reveal d1">
-          <h3>2. Email directly</h3>
-          <p>For direct enquiries, email us at <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>.</p>
+          <h3 data-i18n="extra.contact.k12">2. Email directly</h3>
+          <p data-i18n="extra.contact.k29" data-i18n-html="true">For direct enquiries, email us at <a href="mailto:michael.wili@zuraio.ch">michael.wili@zuraio.ch</a>.</p>
           <p class="mono status-note"><!-- TODO: Confirm public contact email address. --></p>
         </article>
 
         <article class="pcard reveal d2">
-          <h3>3. Starter partner conversation</h3>
-          <p>Interested in shaping Zuraio as an early partner? Mention "starter partner" in your message or use the form interest option.</p>
+          <h3 data-i18n="extra.contact.k13">3. Starter partner conversation</h3>
+          <p data-i18n="extra.contact.k14">Interested in shaping Zuraio as an early partner? Mention "starter partner" in your message or use the form interest option.</p>
         </article>
 
-        <p class="mono location">Switzerland</p>
+        <p class="mono location" data-i18n="extra.contact.k45">Switzerland</p>
       </aside>
 
     </div>
@@ -141,27 +141,27 @@
 
 <section class="pad cloud-bg" id="partnerships">
   <div class="wrap">
-    <span class="marker">Partnerships</span>
-    <h2>Starter partner programme.</h2>
-    <p class="lede">Zuraio works with selected starter partners to deploy practical AI workflows, test real use cases and shape the product roadmap.</p>
+    <span class="marker" data-i18n="extra.contact.k46">Partnerships</span>
+    <h2 data-i18n="extra.contact.k15">Starter partner programme.</h2>
+    <p class="lede" data-i18n="extra.contact.k16">Zuraio works with selected starter partners to deploy practical AI workflows, test real use cases and shape the product roadmap.</p>
 
     <div class="grid-cards cols-2">
       <article class="pcard reveal">
-        <h3>Who it is for</h3>
+        <h3 data-i18n="extra.contact.k17">Who it is for</h3>
         <ul>
-          <li>Swiss companies with sensitive internal knowledge</li>
-          <li>Owner-managed and mid-sized organisations</li>
-          <li>Teams that want AI but need data control</li>
-          <li>Organisations that want practical first use cases</li>
+          <li data-i18n="extra.contact.k18">Swiss companies with sensitive internal knowledge</li>
+          <li data-i18n="extra.contact.k19">Owner-managed and mid-sized organisations</li>
+          <li data-i18n="extra.contact.k20">Teams that want AI but need data control</li>
+          <li data-i18n="extra.contact.k21">Organisations that want practical first use cases</li>
         </ul>
       </article>
       <article class="pcard reveal d1">
-        <h3>What partners can expect</h3>
+        <h3 data-i18n="extra.contact.k22">What partners can expect</h3>
         <ul>
-          <li>Direct input into product development</li>
-          <li>Early access to Zuraio AI Hub</li>
-          <li>Practical workflow selection and controlled pilot setup</li>
-          <li>Roadmap influence — commercial terms to be agreed</li>
+          <li data-i18n="extra.contact.k23">Direct input into product development</li>
+          <li data-i18n="extra.contact.k24">Early access to Zuraio AI Hub</li>
+          <li data-i18n="extra.contact.k25">Practical workflow selection and controlled pilot setup</li>
+          <li data-i18n="extra.contact.k26">Roadmap influence — commercial terms to be agreed</li>
         </ul>
       </article>
     </div>
@@ -170,7 +170,7 @@
       <p class="mono">TODO: Confirm starter partner programme terms, pricing (if any) and eligibility criteria before publication.</p>
     </div>
 
-    <p style="margin-top:24px;"><a class="btn btn-primary" href="#contact-form">Start the conversation</a></p>
+    <p style="margin-top:24px;"><a class="btn btn-primary" href="#contact-form" data-i18n="extra.contact.k27">Start the conversation</a></p>
   </div>
 </section>
 

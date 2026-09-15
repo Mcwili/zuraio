@@ -9,6 +9,34 @@ import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { HTML_PAGES, LOCALES, LOCALE_DIRS } from './seo-config.mjs';
 import { postprocessHtml, injectLangRedirect } from './postprocess-seo.mjs';
+import * as copyEn from '../public/zuraio-comparison/js/copy-en.js';
+import * as copyDe from '../public/zuraio-comparison/js/copy-de.js';
+import * as copyFr from '../public/zuraio-comparison/js/copy-fr.js';
+import * as copyIt from '../public/zuraio-comparison/js/copy-it.js';
+
+const COPY = { en: copyEn, de: copyDe, fr: copyFr, it: copyIt };
+
+/**
+ * Localize `data-i18n` elements inside <noscript>. The browser never exposes
+ * that content to the DOM while scripting is on, so applyDataI18n() cannot
+ * reach it; without this the fallback stays English on every locale page.
+ */
+function localizeNoscript(html, locale) {
+  const copy = COPY[locale];
+  if (!copy) return html;
+  const lookup = (key) => key.split('.').reduce((acc, part) => (acc == null ? acc : acc[part]), copy);
+
+  return html.replace(/<noscript>([\s\S]*?)<\/noscript>/gi, (block, inner) => {
+    const localized = inner.replace(
+      /<([a-zA-Z0-9]+)((?:"[^"]*"|'[^']*'|[^>"'])*\bdata-i18n="([^"]+)"(?:"[^"]*"|'[^']*'|[^>"'])*)>([\s\S]*?)<\/\1>/g,
+      (full, tag, attrs, key, body) => {
+        const value = lookup(key);
+        return typeof value === 'string' ? `<${tag}${attrs}>${value}</${tag}>` : full;
+      },
+    );
+    return `<noscript>${localized}</noscript>`;
+  });
+}
 
 function rewriteAssetPathsForLocale(html, locale) {
   if (locale === 'en') return html;
@@ -147,7 +175,8 @@ function bootstrapLocaleDir(locale) {
   fs.mkdirSync(outDir, { recursive: true });
   for (const htmlPage of HTML_PAGES) {
     const dest = path.join(outDir, htmlPage);
-    fs.writeFileSync(dest, rewriteAssetPathsForLocale(baseTemplates[htmlPage], locale));
+    const localized = localizeNoscript(baseTemplates[htmlPage], locale);
+    fs.writeFileSync(dest, rewriteAssetPathsForLocale(localized, locale));
   }
 }
 
