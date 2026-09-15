@@ -19,8 +19,14 @@ function rewriteAssetPathsForLocale(html, locale) {
     .replace(/\bsrc="js\//g, 'src="../js/')
     .replace(/\bhref="zuraio\//g, 'href="../zuraio/')
     .replace(/\bsrc="zuraio\//g, 'src="../zuraio/')
-    .replace(/srcset="\.\.\/zuraio\//g, 'srcset="../zuraio/')
-    .replace(/srcset="zuraio\//g, 'srcset="../zuraio/');
+    .replace(/srcset="([^"]*)"/g, (_match, value) => {
+      // Rewrite every candidate, not only the first one (e.g. "a.avif 640w, b.avif 960w").
+      const rewritten = value
+        .split(',')
+        .map((candidate) => candidate.trim().replace(/^zuraio\//, '../zuraio/'))
+        .join(', ');
+      return `srcset="${rewritten}"`;
+    });
 }
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
