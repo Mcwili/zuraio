@@ -113,7 +113,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1229
+          "height": 1067
         }
       },
       "it": {
@@ -123,10 +123,10 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1229
+          "height": 1067
         }
       }
     }
   },
-  "generatedAt": "2026-10-10T19:52:56.558Z"
+  "generatedAt": "2026-10-10T19:56:14.890Z"
 };
