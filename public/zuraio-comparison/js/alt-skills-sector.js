@@ -1,330 +1,32 @@
 import { getSkillsTabsMeta, SKILLS_TAB_IDS } from './copy-alt-home-skills-tabs.js';
-import { currentLocale } from './path-locale.js';
+import { assetHref, currentLocale } from './path-locale.js';
+import { SKILLS_IMAGE_MANIFEST as manifest } from './skills-image-manifest.js';
 
 const PEOPLE_ICON = `<svg class="alt-skills-panel__workshop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+
+const LIGHTBOX_CLOSE = {
+  en: 'Close enlarged image',
+  de: 'Vergrösserte Ansicht schliessen',
+  fr: 'Fermer l’image agrandie',
+  it: 'Chiudi immagine ingrandita',
+};
 
 function legendRowId(tabId, n) {
   return `skills-legend-${tabId}-${n}`;
 }
 
-function marker(n) {
-  return `<span class="alt-skills-doc__marker" aria-hidden="true">${n}</span>`;
-}
-
-/** One continuous highlight: marker + first word nowrap inside a single <mark>. */
-function hlAll(text, n, tabId) {
-  const id = legendRowId(tabId, n);
-  const space = text.indexOf(' ');
-  const first = space === -1 ? text : text.slice(0, space);
-  const rest = space === -1 ? '' : text.slice(space + 1);
-  const nowrapLead = `${marker(n)}${first}`;
-  const tail = rest ? ` ${rest}` : '';
-  return `<span class="alt-skills-doc__hl" data-hl="${n}" aria-describedby="${id}"><mark class="alt-skills-doc__mark"><span class="alt-skills-doc__hl-nowrap">${nowrapLead}</span>${tail}</mark></span>`;
-}
-
-function hlBlock(innerHtml, n, tabId) {
-  const id = legendRowId(tabId, n);
-  return `<span class="alt-skills-doc__hl alt-skills-doc__hl--block" data-hl="${n}" aria-describedby="${id}"><mark class="alt-skills-doc__mark"><span class="alt-skills-doc__hl-nowrap">${marker(n)}</span>${innerHtml}</mark></span>`;
-}
-
-function figCells(label, value, note) {
-  return `<span class="alt-skills-doc__fig-label">${label}</span><span class="alt-skills-doc__fig-value">${value}</span><span class="alt-skills-doc__fig-note">${note}</span>`;
-}
-
-function figuresGrid(locale, tabId) {
-  const hlId = legendRowId(tabId, 2);
-  const presets = {
-    de: [
-      ['Umsatz', "CHF 184'200", '+6 % gegenüber August', false],
-      ['Offene Rechnungen', "CHF 42'750", '3 überfällig', true],
-      ['Liquidität', '2,4 Monate', 'der Fixkosten', false],
-    ],
-    fr: [
-      ['Chiffre d’affaires', "CHF 184'200", '+6 % par rapport à août', false],
-      ['Factures ouvertes', "CHF 42'750", '3 en retard', true],
-      ['Liquidités', '2,4 mois', 'des frais fixes', false],
-    ],
-    it: [
-      ['Fatturato', "CHF 184'200", '+6 % rispetto ad agosto', false],
-      ['Fatture aperte', "CHF 42'750", '3 scadute', true],
-      ['Liquidità', '2,4 mesi', 'dei costi fissi', false],
-    ],
-    en: [
-      ['Revenue', 'CHF 184,200', '+6% vs August', false],
-      ['Open invoices', 'CHF 42,750', '3 overdue', true],
-      ['Liquidity', '2.4 months', 'of fixed costs', false],
-    ],
+function imageSizes(sector, locale) {
+  const loc = manifest.sectors?.[sector]?.[locale] ?? manifest.sectors?.[sector]?.en;
+  if (!loc?.desktop) return null;
+  return {
+    desktop: loc.desktop,
+    mobile: loc.mobile ?? loc.desktop,
   };
-  const rows = presets[locale] ?? presets.en;
-  const figs = rows
-    .map(([label, value, note, hl]) => {
-      if (hl) {
-        return `<div class="alt-skills-doc__fig alt-skills-doc__fig--hl" data-hl="2" aria-describedby="${hlId}">
-          <div class="alt-skills-doc__fig-head">${marker(2)}<span class="alt-skills-doc__fig-label">${label}</span></div>
-          <span class="alt-skills-doc__fig-value">${value}</span>
-          <span class="alt-skills-doc__fig-note">${note}</span>
-        </div>`;
-      }
-      const inner = figCells(label, value, note);
-      return `<div class="alt-skills-doc__fig">${inner}</div>`;
-    })
-    .join('');
-  return `<div class="alt-skills-doc__figures">${figs}</div>`;
 }
 
-function renderDocArchitecture(locale, meta, tabId) {
-  if (locale === 'fr') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--quote">
-        <span class="alt-skills-doc__badge">${meta.panels.architecture.badge}</span>
-        <div class="alt-skills-doc__paper">
-          <p class="alt-skills-doc__letterhead">${hlAll('Muster Architectes SA · Winterthour', 1, tabId)}</p>
-          <h4 class="alt-skills-doc__title">Offre 2026-041</h4>
-          <p class="alt-skills-doc__subtitle">Transformation d’une maison individuelle, Winterthour</p>
-          <p class="alt-skills-doc__meta">À : Famille Brunner</p>
-          <table class="alt-skills-doc__table">
-            <thead><tr><th>Phase (SIA 102)</th><th>Honoraires</th></tr></thead>
-            <tbody>
-              <tr><td>31 Avant-projet</td><td>CHF 8'400</td></tr>
-              <tr><td>32 Projet de l’ouvrage</td><td>CHF 12'600</td></tr>
-              <tr><td>33 Procédure de demande d’autorisation</td><td>CHF 4'200</td></tr>
-              <tr><td>41 Appel d’offres</td><td>CHF 6'300</td></tr>
-              <tr><td>Sous-total</td><td>CHF 31'500</td></tr>
-              <tr><td>${hlAll('Rabais clients fidèles (5 %)', 2, tabId)}</td><td>CHF 1'575</td></tr>
-              <tr class="alt-skills-doc__total"><td>Total hors TVA</td><td>CHF 29'925</td></tr>
-            </tbody>
-          </table>
-          <p class="alt-skills-doc__terms">${hlAll('Payable à 30 jours. Nos conditions générales s’appliquent.', 3, tabId)}</p>
-        </div>
-      </div>`;
-  }
-  if (locale === 'it') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--quote">
-        <span class="alt-skills-doc__badge">${meta.panels.architecture.badge}</span>
-        <div class="alt-skills-doc__paper">
-          <p class="alt-skills-doc__letterhead">${hlAll('Muster Architetti SA · Winterthur', 1, tabId)}</p>
-          <h4 class="alt-skills-doc__title">Offerta 2026-041</h4>
-          <p class="alt-skills-doc__subtitle">Ristrutturazione di una casa unifamiliare, Winterthur</p>
-          <p class="alt-skills-doc__meta">A: Famiglia Brunner</p>
-          <table class="alt-skills-doc__table">
-            <thead><tr><th>Fase (SIA 102)</th><th>Onorario</th></tr></thead>
-            <tbody>
-              <tr><td>31 Progetto di massima</td><td>CHF 8'400</td></tr>
-              <tr><td>32 Progetto definitivo</td><td>CHF 12'600</td></tr>
-              <tr><td>33 Procedura di autorizzazione</td><td>CHF 4'200</td></tr>
-              <tr><td>41 Appalto</td><td>CHF 6'300</td></tr>
-              <tr><td>Subtotale</td><td>CHF 31'500</td></tr>
-              <tr><td>${hlAll('Sconto clienti abituali (5 %)', 2, tabId)}</td><td>CHF 1'575</td></tr>
-              <tr class="alt-skills-doc__total"><td>Totale IVA esclusa</td><td>CHF 29'925</td></tr>
-            </tbody>
-          </table>
-          <p class="alt-skills-doc__terms">${hlAll('Pagabile entro 30 giorni. Valgono le nostre condizioni generali.', 3, tabId)}</p>
-        </div>
-      </div>`;
-  }
-  if (locale === 'de') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--quote">
-        <span class="alt-skills-doc__badge">${meta.panels.architecture.badge}</span>
-        <div class="alt-skills-doc__paper">
-          <p class="alt-skills-doc__letterhead">${hlAll('Muster Architekten AG · Winterthur', 1, tabId)}</p>
-          <h4 class="alt-skills-doc__title">Offerte 2026-041</h4>
-          <p class="alt-skills-doc__subtitle">Umbau Einfamilienhaus, Winterthur</p>
-          <p class="alt-skills-doc__meta">An: Familie Brunner</p>
-          <table class="alt-skills-doc__table">
-            <thead><tr><th>Phase (SIA 102)</th><th>Honorar</th></tr></thead>
-            <tbody>
-              <tr><td>31 Vorprojekt</td><td>CHF 8'400</td></tr>
-              <tr><td>32 Bauprojekt</td><td>CHF 12'600</td></tr>
-              <tr><td>33 Bewilligungsverfahren</td><td>CHF 4'200</td></tr>
-              <tr><td>41 Ausschreibung</td><td>CHF 6'300</td></tr>
-              <tr><td>Zwischentotal</td><td>CHF 31'500</td></tr>
-              <tr><td>${hlAll('Rabatt für Stammkunden (5 %)', 2, tabId)}</td><td>CHF 1'575</td></tr>
-              <tr class="alt-skills-doc__total"><td>Total exkl. MWST</td><td>CHF 29'925</td></tr>
-            </tbody>
-          </table>
-          <p class="alt-skills-doc__terms">${hlAll('Zahlbar innert 30 Tagen. Es gelten unsere allgemeinen Bedingungen.', 3, tabId)}</p>
-        </div>
-      </div>`;
-  }
-  return `
-    <div class="alt-skills-doc alt-skills-doc--quote">
-      <span class="alt-skills-doc__badge">${meta.panels.architecture.badge}</span>
-      <div class="alt-skills-doc__paper">
-        <p class="alt-skills-doc__letterhead">${hlAll('Muster Architekten AG · Winterthur', 1, tabId)}</p>
-        <h4 class="alt-skills-doc__title">Quote 2026-041</h4>
-        <p class="alt-skills-doc__subtitle">Renovation of a detached house, Winterthur</p>
-        <p class="alt-skills-doc__meta">To: Brunner family</p>
-        <table class="alt-skills-doc__table">
-          <thead><tr><th>Phase (SIA 102)</th><th>Fee</th></tr></thead>
-          <tbody>
-            <tr><td>31 Preliminary design</td><td>CHF 8,400</td></tr>
-            <tr><td>32 Construction project</td><td>CHF 12,600</td></tr>
-            <tr><td>33 Permit process</td><td>CHF 4,200</td></tr>
-            <tr><td>41 Tender</td><td>CHF 6,300</td></tr>
-            <tr><td>Subtotal</td><td>CHF 31,500</td></tr>
-            <tr><td>${hlAll('Discount for repeat clients (5%)', 2, tabId)}</td><td>CHF 1,575</td></tr>
-            <tr class="alt-skills-doc__total"><td>Total excl. VAT</td><td>CHF 29,925</td></tr>
-          </tbody>
-        </table>
-        <p class="alt-skills-doc__terms">${hlAll('Payment within 30 days. Our standard terms apply.', 3, tabId)}</p>
-      </div>
-    </div>`;
+function imageBaseName(sector, locale) {
+  return `zuraio/assets/skills/zuraio-skill-${sector}-${locale}`;
 }
-
-function renderDocFiduciary(locale, meta, tabId) {
-  if (locale === 'fr') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--report">
-        <span class="alt-skills-doc__badge">${meta.panels.fiduciary.badge}</span>
-        <div class="alt-skills-doc__paper">
-          <h4 class="alt-skills-doc__title">Rapport mensuel septembre 2026</h4>
-          <p class="alt-skills-doc__subtitle">Muster SA · pour la séance du conseil d’administration du 14 octobre</p>
-          <h5 class="alt-skills-doc__section">${hlAll('En bref', 1, tabId)}</h5>
-          ${figuresGrid('fr', tabId)}
-          <h5 class="alt-skills-doc__section">À discuter</h5>
-          <ul class="alt-skills-doc__list">
-            <li>${hlAll('Exemple Sàrl a 45 jours de retard (CHF 18\'300). Nous proposons un rappel cette semaine.', 3, tabId)}</li>
-            <li>Décompte TVA du 3e trimestre dû le 30 novembre.</li>
-            <li>Bouclement annuel : documents d’ici au 31 janvier.</li>
-          </ul>
-        </div>
-      </div>`;
-  }
-  if (locale === 'it') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--report">
-        <span class="alt-skills-doc__badge">${meta.panels.fiduciary.badge}</span>
-        <div class="alt-skills-doc__paper">
-          <h4 class="alt-skills-doc__title">Rapporto mensile settembre 2026</h4>
-          <p class="alt-skills-doc__subtitle">Muster SA · per la seduta del consiglio d’amministrazione del 14 ottobre</p>
-          <h5 class="alt-skills-doc__section">${hlAll('In sintesi', 1, tabId)}</h5>
-          ${figuresGrid('it', tabId)}
-          <h5 class="alt-skills-doc__section">Da discutere</h5>
-          <ul class="alt-skills-doc__list">
-            <li>${hlAll('Esempio Sagl è in ritardo di 45 giorni (CHF 18\'300). Suggeriamo un sollecito questa settimana.', 3, tabId)}</li>
-            <li>Rendiconto IVA del 3° trimestre in scadenza il 30 novembre.</li>
-            <li>Chiusura annuale: documenti entro il 31 gennaio.</li>
-          </ul>
-        </div>
-      </div>`;
-  }
-  if (locale === 'de') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--report">
-        <span class="alt-skills-doc__badge">${meta.panels.fiduciary.badge}</span>
-        <div class="alt-skills-doc__paper">
-          <h4 class="alt-skills-doc__title">Monatsreport September 2026</h4>
-          <p class="alt-skills-doc__subtitle">Muster AG · für die VR-Sitzung vom 14. Oktober</p>
-          <h5 class="alt-skills-doc__section">${hlAll('Auf einen Blick', 1, tabId)}</h5>
-          ${figuresGrid('de', tabId)}
-          <h5 class="alt-skills-doc__section">Zu besprechen</h5>
-          <ul class="alt-skills-doc__list">
-            <li>${hlAll(`Die Beispiel GmbH ist 45 Tage im Verzug (CHF 18'300). Wir empfehlen diese Woche eine Mahnung.`, 3, tabId)}</li>
-            <li>MWST-Abrechnung Q3 fällig am 30. November.</li>
-            <li>Jahresabschluss: Unterlagen bis 31. Januar.</li>
-          </ul>
-        </div>
-      </div>`;
-  }
-  return `
-    <div class="alt-skills-doc alt-skills-doc--report">
-      <span class="alt-skills-doc__badge">${meta.panels.fiduciary.badge}</span>
-      <div class="alt-skills-doc__paper">
-        <h4 class="alt-skills-doc__title">Monthly report September 2026</h4>
-        <p class="alt-skills-doc__subtitle">Muster AG · for the board meeting on 14 October</p>
-        <h5 class="alt-skills-doc__section">${hlAll('At a glance', 1, tabId)}</h5>
-        ${figuresGrid('en', tabId)}
-        <h5 class="alt-skills-doc__section">Points to discuss</h5>
-        <ul class="alt-skills-doc__list">
-          <li>${hlAll('Beispiel GmbH is 45 days overdue (CHF 18,300). We suggest a reminder this week.', 3, tabId)}</li>
-          <li>VAT return Q3 due on 30 November.</li>
-          <li>Year-end close: documents by 31 January.</li>
-        </ul>
-      </div>
-    </div>`;
-}
-
-function renderDocProperty(locale, meta, tabId) {
-  const badge = meta.panels.property.badge;
-  if (locale === 'fr') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--email">
-        <span class="alt-skills-doc__badge">${hlAll(badge, 3, tabId)}</span>
-        <div class="alt-skills-doc__paper">
-          <div class="alt-skills-doc__email-head">
-            <p><span class="alt-skills-doc__email-k">À :</span> Mme Baumann</p>
-            <p><span class="alt-skills-doc__email-k">Objet :</span> RE: Machine à laver de la buanderie</p>
-          </div>
-          <div class="alt-skills-doc__email-body">
-            <p>Bonjour Madame Baumann,</p>
-            <p>${hlAll('Merci de nous avoir prévenus.', 1, tabId)} Notre partenaire de service contrôlera la machine à laver le jeudi 8 octobre, entre 8 h et 10 h. D’ici là, vous pouvez volontiers utiliser la machine de la maison B.</p>
-            <p>${hlAll('Conformément au règlement de maison (ch. 5), nous vous prions de ne pas utiliser la machine avant son contrôle.', 2, tabId)}</p>
-            <p>Meilleures salutations<br>Muster Gérances SA</p>
-          </div>
-        </div>
-      </div>`;
-  }
-  if (locale === 'it') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--email">
-        <span class="alt-skills-doc__badge">${hlAll(badge, 3, tabId)}</span>
-        <div class="alt-skills-doc__paper">
-          <div class="alt-skills-doc__email-head">
-            <p><span class="alt-skills-doc__email-k">A:</span> Signora Baumann</p>
-            <p><span class="alt-skills-doc__email-k">Oggetto:</span> R: Lavatrice nella lavanderia</p>
-          </div>
-          <div class="alt-skills-doc__email-body">
-            <p>Gentile signora Baumann,</p>
-            <p>${hlAll('Grazie per la segnalazione.', 1, tabId)} Il nostro partner di servizio controllerà la lavatrice giovedì 8 ottobre, tra le 8 e le 10. Nel frattempo può usare la lavatrice della casa B.</p>
-            <p>${hlAll('Secondo il regolamento della casa (cifra 5), la preghiamo di non usare la lavatrice fino al controllo.', 2, tabId)}</p>
-            <p>Cordiali saluti<br>Muster Amministrazioni SA</p>
-          </div>
-        </div>
-      </div>`;
-  }
-  if (locale === 'de') {
-    return `
-      <div class="alt-skills-doc alt-skills-doc--email">
-        <span class="alt-skills-doc__badge">${hlAll(badge, 3, tabId)}</span>
-        <div class="alt-skills-doc__paper">
-          <div class="alt-skills-doc__email-head">
-            <p><span class="alt-skills-doc__email-k">An:</span> Frau Baumann</p>
-            <p><span class="alt-skills-doc__email-k">Betreff:</span> AW: Waschmaschine in der Waschküche</p>
-          </div>
-          <div class="alt-skills-doc__email-body">
-            <p>Guten Tag Frau Baumann</p>
-            <p>${hlAll('Vielen Dank für Ihre Meldung.', 1, tabId)} Unser Servicepartner prüft die Waschmaschine am Donnerstag, 8. Oktober, zwischen 8 und 10 Uhr. Bis dahin können Sie gerne die Maschine in Haus B benutzen.</p>
-            <p>${hlAll('Gemäss Hausordnung (Ziffer 5) bitten wir Sie, die Maschine bis zur Prüfung nicht zu benutzen.', 2, tabId)}</p>
-            <p>Freundliche Grüsse<br>Muster Verwaltungen AG</p>
-          </div>
-        </div>
-      </div>`;
-  }
-  return `
-    <div class="alt-skills-doc alt-skills-doc--email">
-      <span class="alt-skills-doc__badge">${hlAll(badge, 3, tabId)}</span>
-      <div class="alt-skills-doc__paper">
-        <div class="alt-skills-doc__email-head">
-          <p><span class="alt-skills-doc__email-k">To:</span> Ms Baumann</p>
-          <p><span class="alt-skills-doc__email-k">Subject:</span> Re: Washing machine in the laundry room</p>
-        </div>
-        <div class="alt-skills-doc__email-body">
-          <p>Dear Ms Baumann,</p>
-          <p>${hlAll('Thank you for letting us know.', 1, tabId)} Our service partner will check the washing machine on Thursday, 8 October, between 8 and 10 am. Until then, you are welcome to use the machine in house B.</p>
-          <p>${hlAll('As set out in the house rules (section 5), please don\'t use the machine until it has been checked.', 2, tabId)}</p>
-          <p>Kind regards,<br>Muster Verwaltungen AG</p>
-        </div>
-      </div>
-    </div>`;
-}
-
-const DOC_RENDERERS = {
-  architecture: renderDocArchitecture,
-  fiduciary: renderDocFiduciary,
-  property: renderDocProperty,
-};
 
 function renderUses(usesLabel, sources) {
   const chips = sources.map((s) => `<span class="alt-sq-source-chips__chip">${s}</span>`).join('');
@@ -362,12 +64,43 @@ function renderPanelCopy(tabId, panel, meta, workshopLine) {
     </div>`;
 }
 
-function renderPanelDoc(tabId, locale, meta, caption) {
-  const docHtml = DOC_RENDERERS[tabId](locale, meta, tabId);
+function renderPanelImage(tabId, locale, panel, meta, caption, { eager = false } = {}) {
+  const sizes = imageSizes(tabId, locale);
+  if (!sizes) {
+    return `<div class="alt-skills-panel__doc"><p class="alt-skills-doc__caption">${caption}</p></div>`;
+  }
+
+  const base = imageBaseName(tabId, locale);
+  const desktopSrc = assetHref(`${base}.webp`);
+  const mobileSrc = assetHref(`${base}-mobile.webp`);
+  const { width: dw, height: dh } = sizes.desktop;
+  const { width: mw, height: mh } = sizes.mobile;
+  const alt = panel.imageAlt ?? '';
+  const loading = eager ? 'eager' : 'lazy';
+  const fetchPriority = eager ? ' fetchpriority="high"' : '';
+
   return `
     <div class="alt-skills-panel__doc">
-      ${docHtml}
-      <p class="alt-skills-doc__caption">${caption}</p>
+      <figure class="alt-skills-panel__figure">
+        <button type="button" class="alt-skills-panel__image-btn" data-skills-lightbox-trigger aria-haspopup="dialog" aria-label="${meta.imageTapHint}">
+          <picture>
+            <source media="(max-width: 599px)" srcset="${mobileSrc}" width="${mw}" height="${mh}" />
+            <img
+              class="alt-skills-panel__image"
+              src="${desktopSrc}"
+              width="${dw}"
+              height="${dh}"
+              alt="${alt.replace(/"/g, '&quot;')}"
+              loading="${loading}"
+              decoding="async"${fetchPriority}
+              data-skills-fullsrc="${mobileSrc}"
+              data-skills-fullsrc-desktop="${desktopSrc}"
+            />
+          </picture>
+        </button>
+        <p class="alt-skills-panel__tap-hint">${meta.imageTapHint}</p>
+        <figcaption class="alt-skills-doc__caption">${caption}</figcaption>
+      </figure>
     </div>`;
 }
 
@@ -388,7 +121,7 @@ export function renderSkillsSectorTabs(copy, locale, routeHref) {
       <div role="tabpanel" id="skills-panel-${tabId}" class="alt-skills-panel${hidden ? ' is-hidden' : ''}" aria-labelledby="skills-tab-${tabId}" data-skills-panel="${tabId}" aria-hidden="${hidden ? 'true' : 'false'}">
         <div class="alt-skills-panel__grid">
           ${renderPanelCopy(tabId, panel, meta, meta.workshopLine)}
-          ${renderPanelDoc(tabId, locale, meta, meta.docCaption)}
+          ${renderPanelImage(tabId, locale, panel, meta, meta.docCaption, { eager: i === 0 })}
         </div>
       </div>`;
   }).join('');
@@ -417,28 +150,16 @@ function setHighlightActive(panel, n, active) {
   panel.querySelectorAll(`[data-hl-target="${n}"]`).forEach((el) => {
     el.classList.toggle('is-hl-linked', active);
   });
-  panel.querySelectorAll(`[data-hl="${n}"]`).forEach((el) => {
-    el.classList.toggle('is-hl-linked', active);
-  });
 }
 
 function bindHighlightLinking(root) {
   root.querySelectorAll('[role="tabpanel"]').forEach((panel) => {
-    const activate = (n) => setHighlightActive(panel, n, true);
-    const deactivate = (n) => setHighlightActive(panel, n, false);
-
     panel.querySelectorAll('[data-hl-target]').forEach((btn) => {
       const n = btn.dataset.hlTarget;
-      btn.addEventListener('mouseenter', () => activate(n));
-      btn.addEventListener('mouseleave', () => deactivate(n));
-      btn.addEventListener('focus', () => activate(n));
-      btn.addEventListener('blur', () => deactivate(n));
-    });
-
-    panel.querySelectorAll('[data-hl]').forEach((hlEl) => {
-      const n = hlEl.dataset.hl;
-      hlEl.addEventListener('mouseenter', () => activate(n));
-      hlEl.addEventListener('mouseleave', () => deactivate(n));
+      btn.addEventListener('mouseenter', () => setHighlightActive(panel, n, true));
+      btn.addEventListener('mouseleave', () => setHighlightActive(panel, n, false));
+      btn.addEventListener('focus', () => setHighlightActive(panel, n, true));
+      btn.addEventListener('blur', () => setHighlightActive(panel, n, false));
     });
   });
 }
@@ -496,6 +217,73 @@ function bindTabsKeyboard(root) {
   });
 }
 
+function mobileSkillsLightbox() {
+  return window.matchMedia('(max-width: 599px)').matches;
+}
+
+function ensureLightbox(locale) {
+  let el = document.getElementById('alt-skills-lightbox');
+  if (el) return el;
+  const closeLabel = LIGHTBOX_CLOSE[locale] ?? LIGHTBOX_CLOSE.en;
+  el = document.createElement('div');
+  el.id = 'alt-skills-lightbox';
+  el.className = 'alt-skills-lightbox';
+  el.hidden = true;
+  el.innerHTML = `
+    <div class="alt-skills-lightbox__backdrop" data-skills-lightbox-close tabindex="-1"></div>
+    <div class="alt-skills-lightbox__panel" role="dialog" aria-modal="true" aria-label="${closeLabel}">
+      <button type="button" class="alt-skills-lightbox__close" data-skills-lightbox-close>${closeLabel}</button>
+      <div class="alt-skills-lightbox__scroll">
+        <img class="alt-skills-lightbox__img" alt="" decoding="async" />
+      </div>
+    </div>`;
+  document.body.appendChild(el);
+  return el;
+}
+
+function bindSkillsLightbox(root) {
+  const locale = skillsLocaleFromPage();
+  const lightbox = ensureLightbox(locale);
+  const img = lightbox.querySelector('.alt-skills-lightbox__img');
+  let lastTrigger = null;
+
+  const close = () => {
+    lightbox.hidden = true;
+    document.body.classList.remove('alt-skills-lightbox-open');
+    if (lastTrigger) lastTrigger.focus();
+    lastTrigger = null;
+  };
+
+  lightbox.querySelectorAll('[data-skills-lightbox-close]').forEach((node) => {
+    node.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.hidden && e.key === 'Escape') {
+      e.preventDefault();
+      close();
+    }
+  });
+
+  root.querySelectorAll('[data-skills-lightbox-trigger]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!mobileSkillsLightbox()) return;
+      const panelImg = btn.querySelector('.alt-skills-panel__image');
+      if (!panelImg) return;
+      lastTrigger = btn;
+      const src =
+        mobileSkillsLightbox() && panelImg.dataset.skillsFullsrc
+          ? panelImg.dataset.skillsFullsrc
+          : panelImg.src;
+      img.src = src;
+      img.alt = panelImg.alt;
+      lightbox.hidden = false;
+      document.body.classList.add('alt-skills-lightbox-open');
+      lightbox.querySelector('.alt-skills-lightbox__close')?.focus();
+    });
+  });
+}
+
 export function initSkillsSectorTabs() {
   const root = document.querySelector('[data-alt-skills-sector]');
   if (!root) return;
@@ -508,6 +296,7 @@ export function initSkillsSectorTabs() {
 
   bindTabsKeyboard(root);
   bindHighlightLinking(root);
+  bindSkillsLightbox(root);
 
   const fromHash = tabIdFromHash(window.location.hash);
   if (fromHash) selectTab(root, fromHash);

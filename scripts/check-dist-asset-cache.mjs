@@ -69,8 +69,8 @@ if (sectorJs.includes('syncPanelMinHeight')) {
   console.error('check-dist-asset-cache: alt-skills-sector.js still has syncPanelMinHeight');
   process.exit(1);
 }
-if (!sectorJs.includes('One continuous highlight')) {
-  console.error('check-dist-asset-cache: alt-skills-sector.js missing Run 8c hlAll');
+if (!sectorJs.includes('data-skills-lightbox-trigger')) {
+  console.error('check-dist-asset-cache: alt-skills-sector.js missing skills image lightbox');
   process.exit(1);
 }
 
