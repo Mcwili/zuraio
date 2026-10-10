@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, '..', 'dist');
 const CACHE_FILE = path.join(ROOT, 'site-asset-cache.txt');
-const STALE = ['20261009f', '20261009e', '20261009d', '20261009c', '20261009b', '20261009a', '20261006d', '20261006c', '20261006b', '20261006a', '20261005f', '20261005e', '20261005c', '20261005b', '20261005a', '20261004b', '20261004a'];
+const STALE = ['20261010e', '20261009f', '20261009e', '20261009d', '20261009c', '20261009b', '20261009a', '20261006d', '20261006c', '20261006b', '20261006a', '20261005f', '20261005e', '20261005c', '20261005b', '20261005a', '20261004b', '20261004a'];
 
 const expected = fs.readFileSync(CACHE_FILE, 'utf8').trim();
 if (!/^\d{8}[a-z]$/.test(expected)) {

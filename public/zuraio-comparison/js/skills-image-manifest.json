@@ -1,0 +1,131 @@
+{
+  "sectors": {
+    "architecture": {
+      "en": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "de": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "fr": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "it": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      }
+    },
+    "fiduciary": {
+      "en": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "de": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "fr": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "it": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      }
+    },
+    "property": {
+      "en": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "de": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "fr": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      },
+      "it": {
+        "desktop": {
+          "width": 1536,
+          "height": 1024
+        },
+        "mobile": {
+          "width": 1080,
+          "height": 1440
+        }
+      }
+    }
+  },
+  "generatedAt": "2026-10-10T19:40:37.324Z"
+}

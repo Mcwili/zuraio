@@ -50,7 +50,11 @@ async function trimMobilePng(inputPath) {
     height = meta.height;
   }
   const width = meta.width;
-  return sharp(inputPath).extract({ left: 0, top: 0, width, height }).png();
+  return {
+    width,
+    height,
+    pipeline: sharp(inputPath).extract({ left: 0, top: 0, width, height }).png(),
+  };
 }
 
 async function toWebp(input, outPath) {
@@ -88,11 +92,11 @@ async function main() {
 
         let pipeline = sharp(srcPath);
         if (mobile) {
-          pipeline = await trimMobilePng(srcPath);
-          const trimmedMeta = await pipeline.metadata();
+          const trimmed = await trimMobilePng(srcPath);
+          pipeline = trimmed.pipeline;
           manifest.sectors[sector][locale].mobile = {
-            width: trimmedMeta.width,
-            height: trimmedMeta.height,
+            width: trimmed.width,
+            height: trimmed.height,
           };
         } else {
           const meta = await pipeline.metadata();
