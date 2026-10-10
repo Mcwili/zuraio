@@ -4,8 +4,8 @@ export const SKILLS_IMAGE_MANIFEST = {
     "architecture": {
       "en": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -14,8 +14,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "de": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -24,8 +24,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "fr": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -34,8 +34,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "it": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -46,8 +46,8 @@ export const SKILLS_IMAGE_MANIFEST = {
     "fiduciary": {
       "en": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -56,8 +56,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "de": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -66,8 +66,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "fr": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -76,8 +76,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "it": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -88,8 +88,8 @@ export const SKILLS_IMAGE_MANIFEST = {
     "property": {
       "en": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -98,8 +98,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "de": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -108,8 +108,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "fr": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -118,8 +118,8 @@ export const SKILLS_IMAGE_MANIFEST = {
       },
       "it": {
         "desktop": {
-          "width": 1536,
-          "height": 1024
+          "width": 1384,
+          "height": 999
         },
         "mobile": {
           "width": 1080,
@@ -128,5 +128,5 @@ export const SKILLS_IMAGE_MANIFEST = {
       }
     }
   },
-  "generatedAt": "2026-10-10T19:56:14.890Z"
+  "generatedAt": "2026-10-10T20:19:58.017Z"
 };

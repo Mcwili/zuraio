@@ -1086,8 +1086,9 @@ body[data-alt-chrome] .alt-skills-panel__image-btn {
 body[data-alt-chrome] .alt-skills-panel__image {
   display: block;
   width: 100%;
-  max-width: 100%;
+  max-width: min(100%, var(--skills-natural-w, 100%));
   height: auto;
+  margin-inline: auto;
   border-radius: 16px;
   box-shadow: none;
 }
@@ -1292,12 +1293,36 @@ body[data-alt-chrome] .alt-skills-sector__link {
 
 @media (min-width: 900px) {
   body[data-alt-chrome] .alt-skills-panel__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: stretch;
+  }
+
+  body[data-alt-chrome] .alt-skills-panel__compact {
     display: grid;
-    grid-template-columns: 2fr 3fr;
-    gap: 48px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px 48px;
     align-items: start;
   }
 
+  body[data-alt-chrome] .alt-skills-panel__intro .alt-skills-panel__body {
+    max-width: none;
+  }
+
+  body[data-alt-chrome] .alt-skills-panel__doc {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  body[data-alt-chrome] .alt-skills-panel__figure {
+    width: 100%;
+  }
+
+  body[data-alt-chrome] .alt-skills-panel__image-btn {
+    width: 100%;
+  }
 }
 
 @media (max-width: 899px) {
@@ -1323,7 +1348,15 @@ body[data-alt-chrome] .alt-skills-sector__link {
     gap: 10px;
   }
 
-  body[data-alt-chrome] .alt-skills-panel__copy {
+  body[data-alt-chrome] .alt-skills-panel__compact {
+    display: contents;
+  }
+
+  body[data-alt-chrome] .alt-skills-panel__intro {
+    display: contents;
+  }
+
+  body[data-alt-chrome] .alt-skills-panel__aside {
     display: contents;
   }
 

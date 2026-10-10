@@ -18,6 +18,7 @@ const LOCALES = ['en', 'de', 'fr', 'it'];
 const BG = { r: 246, g: 246, b: 242 };
 const BG_TOL = 3;
 const MOBILE_PAD_BELOW = 48;
+const DESKTOP_PAD = 24;
 const WEBP_QUALITY = 88;
 
 function isBg(r, g, b, a = 255) {
@@ -29,8 +30,45 @@ function isBg(r, g, b, a = 255) {
   );
 }
 
+async function rawPixels(image) {
+  return image.clone().ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+}
+
+async function contentBounds(image) {
+  const { data, info } = await rawPixels(image);
+  const { width, height, channels } = info;
+  let minX = width;
+  let minY = height;
+  let maxX = -1;
+  let maxY = -1;
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * channels;
+      if (!isBg(data[i], data[i + 1], data[i + 2], data[i + 3])) {
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+  if (maxX < 0) {
+    return { left: 0, top: 0, width, height };
+  }
+  const left = Math.max(0, minX - DESKTOP_PAD);
+  const top = Math.max(0, minY - DESKTOP_PAD);
+  const right = Math.min(width - 1, maxX + DESKTOP_PAD);
+  const bottom = Math.min(height - 1, maxY + DESKTOP_PAD);
+  return {
+    left,
+    top,
+    width: right - left + 1,
+    height: bottom - top + 1,
+  };
+}
+
 async function bottomContentRow(image) {
-  const { data, info } = await image.clone().ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { data, info } = await rawPixels(image);
   const { width, height, channels } = info;
   for (let y = height - 1; y >= 0; y--) {
     for (let x = 0; x < width; x++) {
@@ -39,6 +77,16 @@ async function bottomContentRow(image) {
     }
   }
   return height - 1;
+}
+
+async function trimDesktopPng(inputPath) {
+  const image = sharp(inputPath);
+  const bounds = await contentBounds(image);
+  return {
+    width: bounds.width,
+    height: bounds.height,
+    pipeline: sharp(inputPath).extract(bounds).png(),
+  };
 }
 
 async function trimMobilePng(inputPath) {
@@ -99,10 +147,11 @@ async function main() {
             height: trimmed.height,
           };
         } else {
-          const meta = await pipeline.metadata();
+          const trimmed = await trimDesktopPng(srcPath);
+          pipeline = trimmed.pipeline;
           manifest.sectors[sector][locale].desktop = {
-            width: meta.width,
-            height: meta.height,
+            width: trimmed.width,
+            height: trimmed.height,
           };
         }
 
@@ -114,7 +163,10 @@ async function main() {
           kb: Math.round((bytes / 1024) * 10) / 10,
           ...(mobile
             ? { height: manifest.sectors[sector][locale].mobile.height }
-            : { height: manifest.sectors[sector][locale].desktop.height }),
+            : {
+                width: manifest.sectors[sector][locale].desktop.width,
+                height: manifest.sectors[sector][locale].desktop.height,
+              }),
         });
         if (bytes > 200 * 1024) {
           console.warn(`prepare-skill-images: ${name}.webp is ${report.at(-1).kb} KB (target ≤200 KB)`);
@@ -135,7 +187,8 @@ async function main() {
   );
   console.log('prepare-skill-images: wrote', found, 'WebP files →', path.relative(path.join(ROOT, '..'), OUT_DIR));
   for (const row of report) {
-    console.log(`  ${row.file}\t${row.kb} KB\theight ${row.height}px`);
+    const dim = row.width != null ? `${row.width}×${row.height}px` : `height ${row.height}px`;
+    console.log(`  ${row.file}\t${row.kb} KB\t${dim}`);
   }
   if (found < 24) {
     console.warn(`prepare-skill-images: expected up to 24 files, got ${found}`);
