@@ -9,7 +9,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1192
         }
       },
       "de": {
@@ -19,7 +19,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1192
         }
       },
       "fr": {
@@ -29,7 +29,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1227
         }
       },
       "it": {
@@ -39,7 +39,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1227
         }
       }
     },
@@ -51,7 +51,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1374
         }
       },
       "de": {
@@ -61,7 +61,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1409
         }
       },
       "fr": {
@@ -81,7 +81,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1409
         }
       }
     },
@@ -93,7 +93,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1067
         }
       },
       "de": {
@@ -103,7 +103,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1067
         }
       },
       "fr": {
@@ -113,7 +113,7 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1229
         }
       },
       "it": {
@@ -123,10 +123,10 @@ export const SKILLS_IMAGE_MANIFEST = {
         },
         "mobile": {
           "width": 1080,
-          "height": 1440
+          "height": 1229
         }
       }
     }
   },
-  "generatedAt": "2026-10-10T19:42:41.718Z"
+  "generatedAt": "2026-10-10T19:52:56.558Z"
 };
