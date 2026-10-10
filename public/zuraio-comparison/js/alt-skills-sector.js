@@ -53,14 +53,18 @@ function renderLegend(tabId, panel, legendHeading) {
   </div>`;
 }
 
-function renderPanelCopy(tabId, panel, meta, workshopLine) {
+function renderPanelCompact(tabId, panel, meta, workshopLine) {
   return `
-    <div class="alt-skills-panel__copy">
-      <h3 class="alt-skills-panel__title">${panel.title}</h3>
-      <p class="alt-skills-panel__body">${panel.body}</p>
-      ${renderUses(panel.usesLabel, panel.sources)}
-      ${renderLegend(tabId, panel, meta.legendHeading)}
-      <p class="alt-skills-panel__workshop">${PEOPLE_ICON}<span>${workshopLine}</span></p>
+    <div class="alt-skills-panel__compact">
+      <div class="alt-skills-panel__intro">
+        <h3 class="alt-skills-panel__title">${panel.title}</h3>
+        <p class="alt-skills-panel__body">${panel.body}</p>
+      </div>
+      <div class="alt-skills-panel__aside">
+        ${renderUses(panel.usesLabel, panel.sources)}
+        ${renderLegend(tabId, panel, meta.legendHeading)}
+        <p class="alt-skills-panel__workshop">${PEOPLE_ICON}<span>${workshopLine}</span></p>
+      </div>
     </div>`;
 }
 
@@ -93,6 +97,8 @@ function renderPanelImage(tabId, locale, panel, meta, caption, { eager = false }
               alt="${alt.replace(/"/g, '&quot;')}"
               loading="${loading}"
               decoding="async"${fetchPriority}
+              style="--skills-natural-w: ${dw}px"
+              data-skills-natural-w="${dw}"
               data-skills-fullsrc="${mobileSrc}"
               data-skills-fullsrc-desktop="${desktopSrc}"
             />
@@ -120,7 +126,7 @@ export function renderSkillsSectorTabs(copy, locale, routeHref) {
     return `
       <div role="tabpanel" id="skills-panel-${tabId}" class="alt-skills-panel${hidden ? ' is-hidden' : ''}" aria-labelledby="skills-tab-${tabId}" data-skills-panel="${tabId}" aria-hidden="${hidden ? 'true' : 'false'}">
         <div class="alt-skills-panel__grid">
-          ${renderPanelCopy(tabId, panel, meta, meta.workshopLine)}
+          ${renderPanelCompact(tabId, panel, meta, meta.workshopLine)}
           ${renderPanelImage(tabId, locale, panel, meta, meta.docCaption, { eager: i === 0 })}
         </div>
       </div>`;
