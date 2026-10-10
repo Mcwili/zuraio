@@ -6,7 +6,7 @@ import { currentLocale, getLocaleFromPathname } from './path-locale.js';
 import { resolveRouteFromLocation } from './site-routes.js';
 import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 
-const PAGE_CACHE = '20261010e';
+const PAGE_CACHE = '20261010g';
 
 function pageLocale() {
   return getLocaleFromPathname() ?? (document.documentElement.lang || 'en');
