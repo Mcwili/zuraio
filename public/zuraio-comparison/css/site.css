@@ -138,7 +138,7 @@ section {
 
 /* Section background bands — solid paper / cloud alternation on the homepage.
    hero (photo) → problem cloud → data control dark → different paper →
-   pillars cloud → demo cloud → outcomes paper →
+   pillars cloud → outcomes paper →
    reviewable cloud → origin paper → final olive */
 .section-band--paper {
   background: var(--paper);
@@ -2286,11 +2286,6 @@ h3 .headline-em {
 /* ==========================================================================
    6. Demo tabs, bento, control, audit, origin, final CTA
    ========================================================================== */
-
-/* Demo tabs */
-.demo.section-band--cloud {
-  background: var(--cloud);
-}
 
 .tabs {
   display: flex;
@@ -7141,109 +7136,6 @@ html {
   margin-top: 12px;
 }
 
-.demo-static {
-  margin-top: 0;
-}
-
-.demo-stage {
-  margin-top: 32px;
-  display: grid;
-  gap: 36px;
-}
-
-.demo-static__layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .demo-static__layout {
-    grid-template-columns: 1fr;
-    gap: 36px;
-    align-items: start;
-  }
-}
-
-.demo-static__layout > * {
-  min-width: 0;
-}
-
-.demo-static__frame {
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-lg);
-  background: #fff;
-  box-shadow: var(--shadow-md);
-  width: 100%;
-  max-width: min(100%, 1280px);
-  margin-inline: auto;
-  line-height: 0;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-}
-
-.demo-static__frame img,
-.demo-static__frame video {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center center;
-  border-radius: 0;
-  vertical-align: top;
-  background: #fff;
-}
-
-.demo-static__steps {
-  display: grid;
-  gap: 14px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.demo-static__step {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.demo-static__step-num {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--soft-olive-tint);
-  border: 1px solid rgba(159, 175, 82, 0.28);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--olive-deep);
-}
-
-.demo-static__step-text {
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--charcoal-soft);
-  padding-top: 3px;
-}
-
-.demo-static__caption {
-  margin-top: 18px;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 58ch;
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: var(--muted);
-  text-align: center;
-}
-
 #faq-home.pad {
   padding-top: 62px;
   padding-bottom: 62px;
@@ -7345,75 +7237,6 @@ html {
   color: var(--charcoal-soft);
 }
 
-.demo-examples {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-@media (min-width: 760px) {
-  .demo-examples {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    align-items: stretch;
-  }
-}
-
-.demo-examples .demo-example {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 0;
-  height: 100%;
-  min-height: 0;
-  padding: 20px 20px 22px;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-md, 12px);
-  background: #fff;
-  box-shadow: var(--shadow-sm);
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-}
-
-.demo-examples .demo-example::before {
-  content: none;
-  display: none;
-}
-
-.demo-example__label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--olive-deep);
-}
-
-.demo-example__label::before {
-  content: "";
-  flex-shrink: 0;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--olive);
-}
-
-.demo-example__prompt {
-  margin: 0;
-  flex: 1 1 auto;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--charcoal);
-  font-style: italic;
-}
-
 .control .ccard a {
   color: #dce2c8;
   text-decoration: underline;
@@ -7458,14 +7281,6 @@ html {
     justify-content: center;
     text-align: center;
   }
-}
-
-#assistant-demo .head-block {
-  max-width: 52ch;
-}
-
-#assistant-demo .head-block .lede {
-  max-width: 48ch;
 }
 
 #it-questions .head-block h2 {

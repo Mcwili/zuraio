@@ -1,7 +1,6 @@
 import { renderHeader, renderFooter, initReveal, initTabs } from './site.js?v=20260750';
 import { initHeroComparison } from './hero-comparison.js?v=20260773';
 import { initProblemComparison } from './problem-comparison.js?v=20260716';
-import { initDemoStatic } from './demo-static.js';
 import { initControlParticles } from './control-particles.js?v=20260766';
 import { initAuditParticles } from './audit-particles.js?v=20260768';
 import { initScatteredKnowledge, renderScatteredKnowledge } from './scattered-knowledge.js';
@@ -40,7 +39,6 @@ function boot() {
   initHeroComparison();
   initProblemComparison();
   initScatteredKnowledge();
-  initDemoStatic();
   initControlParticles();
   initAuditParticles();
   initMarquee();
@@ -66,6 +64,5 @@ initLocaleSwitcher(() => {
   renderScatteredKnowledge(document.querySelector('[data-scattered-knowledge]'));
   initFaq();
   refreshRoutesDiagram();
-  initDemoStatic();
   initContactForm();
 });

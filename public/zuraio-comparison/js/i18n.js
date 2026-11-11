@@ -219,28 +219,6 @@ export function applyHomeTranslations() {
   setHtml('#integrations .section-link a', home.integrations.link);
   setLinkHref('#integrations .section-link a', 'integrations.html');
 
-  setText('#assistant-demo h2', home.demo.heading);
-  setText('#assistant-demo .lede', home.demo.body);
-  const demoExamples = document.querySelector('[data-demo-examples]');
-  if (demoExamples && home.demo.examples) {
-    demoExamples.innerHTML = home.demo.examples
-      .map(
-        (example) =>
-          `<li class="demo-example"><span class="demo-example__label">${example.label}</span><p class="demo-example__prompt">${example.prompt}</p></li>`,
-      )
-      .join('');
-  }
-  const demoSteps = document.querySelector('[data-demo-steps]');
-  if (demoSteps && home.demo.steps) {
-    demoSteps.innerHTML = home.demo.steps
-      .map(
-        (step, index) =>
-          `<li class="demo-static__step"><span class="demo-static__step-num">${index + 1}</span><span class="demo-static__step-text">${step.title}</span></li>`,
-      )
-      .join('');
-  }
-  setText('[data-demo-caption]', home.demo.caption);
-
   setText('#data-control .marker', home.dataControl.marker);
   setText('#data-control .data-control__positioning', home.dataControl.positioning);
   setText('#data-control h2', home.dataControl.heading);
@@ -303,12 +281,11 @@ export function applyHomeTranslations() {
   setLinkHref('[data-faq-it-link]', 'faq.html#it-questions');
   setText('#final h2', home.final.heading);
   setText('#final p:not(.small)', home.final.body);
-  const finalCtas = document.querySelectorAll('#final .cta-row a');
-  if (finalCtas[0]) {
-    finalCtas[0].textContent = home.final.primaryCta;
-    finalCtas[0].href = langHref('contact.html');
+  const finalCta = document.querySelector('#final .cta-row a');
+  if (finalCta) {
+    finalCta.textContent = home.final.primaryCta;
+    finalCta.href = langHref('contact.html');
   }
-  if (finalCtas[1]) finalCtas[1].textContent = home.final.secondaryCta;
   setText('#final .small', home.final.supporting);
 }
 

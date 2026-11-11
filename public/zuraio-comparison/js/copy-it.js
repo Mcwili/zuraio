@@ -14,7 +14,7 @@ export const heroOptions = [
     paragraph:
       'Zuraio collega le conoscenze e gli strumenti della vostra azienda, offrendo supporto per ricerca, redazione, analisi e attività quotidiane.',
     cta: 'Scoprite come funziona Zuraio',
-    ctaHref: '#assistant-demo',
+    ctaHref: 'how-it-helps.html',
     imageAlt: 'Zuraio AI Hub con applicazioni e interfaccia di chat.',
   },
   {
@@ -32,7 +32,7 @@ export const heroOptions = [
     paragraph:
       'Cercate nella conoscenza aziendale, create documenti, analizzate informazioni e svolgete il lavoro quotidiano attraverso un AI Hub sicuro.',
     cta: 'Scoprite cosa può fare',
-    ctaHref: '#assistant-demo',
+    ctaHref: 'how-it-helps.html',
     imageAlt: 'Zuraio AI Hub con applicazioni e interfaccia di chat.',
   },
   {
@@ -221,30 +221,6 @@ export const home = {
     body: 'Zuraio si collega a Microsoft 365, SharePoint, Exchange e Teams, oltre che ai sistemi CRM ed ERP. MCP e le API REST consentono collegamenti flessibili ad altri strumenti aziendali.',
     link: 'Visualizzate tutte le integrazioni →',
   },
-  demo: {
-    heading: 'Guardate Zuraio al lavoro.',
-    body: 'Zuraio riunisce il contesto aziendale pertinente, prepara il lavoro e mostra le fonti utilizzate per la verifica.',
-    caption:
-      'Zuraio può preparare una risposta a un cliente utilizzando la corrispondenza precedente, i documenti aggiornati e le informazioni aziendali pertinenti. I collaboratori verificano il risultato e decidono i passaggi successivi.',
-    video: 'zuraio/assets/zuraio-demo.mp4',
-    poster: 'zuraio/assets/zuraio-demo-mail.png',
-    videoAlt:
-      'Assistente e-mail Zuraio con bozza di risposta, contesto aziendale e fonti visibili.',
-    examples: [
-      {
-        label: 'Stato del progetto',
-        prompt: 'Qual è lo stato attuale del progetto X e quali attività sono ancora aperte?',
-      },
-      {
-        label: 'Preparazione dell’incontro',
-        prompt: 'Prepara un briefing per l’incontro di domani con il cliente utilizzando le e-mail, i documenti e le informazioni CRM più recenti.',
-      },
-      {
-        label: 'Comunicazione con il cliente',
-        prompt: 'Prepara una risposta al cliente utilizzando le nostre condizioni approvate e la corrispondenza precedente.',
-      },
-    ],
-  },
   dataControl: {
     marker: 'Controllo dei dati',
     positioning:
@@ -361,7 +337,6 @@ export const home = {
     heading: 'Scoprite che cosa può gestire per voi il vostro assistente.',
     body: 'Esaminiamo insieme gli strumenti che utilizzate, la conoscenza aziendale e i requisiti relativi al controllo dei dati. Individuiamo quindi gli ambiti in cui Zuraio può aiutarvi per primi.',
     primaryCta: 'Prenotate una demo privata',
-    secondaryCta: 'Guardate Zuraio al lavoro',
     supporting: 'La vostra azienda. Le vostre informazioni. La vostra decisione.',
   },
 };

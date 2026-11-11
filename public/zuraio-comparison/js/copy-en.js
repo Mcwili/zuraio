@@ -13,7 +13,7 @@ export const heroOptions = [
     paragraph:
       'Zuraio connects your company\u2019s knowledge and tools, giving your people instant support with research, writing, analysis and everyday tasks.',
     cta: 'See how Zuraio works',
-    ctaHref: '#assistant-demo',
+    ctaHref: 'how-it-helps.html',
   },
   {
     headline: 'An AI assistant that knows your company.',
@@ -29,7 +29,7 @@ export const heroOptions = [
     paragraph:
       'Search company knowledge, create documents, analyse information and complete everyday work through one secure AI Hub.',
     cta: 'See what it can do',
-    ctaHref: '#assistant-demo',
+    ctaHref: 'how-it-helps.html',
   },
   {
     headline: 'An AI assistant for everyone. Powered by your company.',
@@ -217,29 +217,6 @@ export const home = {
     body: 'Zuraio connects with Microsoft 365, SharePoint, Exchange and Teams, as well as CRM and ERP systems. MCP and REST APIs provide flexible connections to additional company tools.',
     link: 'View all integrations →',
   },
-  demo: {
-    heading: 'See your assistant working.',
-    body: 'Zuraio gathers relevant company context, prepares the work and shows its sources for your review.',
-    caption:
-      'Zuraio can prepare a customer reply using previous correspondence, current documents and relevant company information. The employee reviews the result and decides what happens next.',
-    video: 'zuraio/assets/zuraio-demo.mp4',
-    poster: 'zuraio/assets/zuraio-demo-mail.png',
-    videoAlt: 'Zuraio email assistant — draft reply prepared with company context and visible sources.',
-    examples: [
-      {
-        label: 'Project status',
-        prompt: 'What is the latest status of Project X, and which actions are still open?',
-      },
-      {
-        label: 'Meeting preparation',
-        prompt: 'Prepare a briefing for tomorrow\u2019s customer meeting using the latest emails, documents and CRM information.',
-      },
-      {
-        label: 'Customer communication',
-        prompt: 'Draft a customer reply using our approved terms and previous correspondence.',
-      },
-    ],
-  },
   dataControl: {
     marker: 'Data control',
     positioning: 'Built for Swiss SMEs that want the benefits of AI without losing control of company data.',
@@ -346,7 +323,6 @@ export const home = {
     heading: 'See what your own assistant could take off your desk.',
     body: 'We will look at your current tools, company knowledge and data-control requirements, then identify where Zuraio could help first.',
     primaryCta: 'Book a private demo',
-    secondaryCta: 'See the assistant working',
     supporting: 'Your company. Your information. Your approval.',
   },
 };

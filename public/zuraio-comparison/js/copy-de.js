@@ -14,7 +14,7 @@ export const heroOptions = [
     paragraph:
       'Zuraio verbindet das Wissen und die Tools Ihres Unternehmens und unterstützt Ihre Teams bei Recherche, Texten, Analyse und alltäglichen Aufgaben.',
     cta: 'So funktioniert Zuraio',
-    ctaHref: '#assistant-demo',
+    ctaHref: 'how-it-helps.html',
     imageAlt: 'Zuraio AI Hub mit Anwendungen und Chat-Oberfläche.',
   },
   {
@@ -32,7 +32,7 @@ export const heroOptions = [
     paragraph:
       'Durchsuchen Sie Unternehmenswissen, erstellen Sie Dokumente, analysieren Sie Informationen und erledigen Sie alltägliche Arbeit über einen sicheren AI Hub.',
     cta: 'Sehen Sie, was möglich ist',
-    ctaHref: '#assistant-demo',
+    ctaHref: 'how-it-helps.html',
     imageAlt: 'Zuraio AI Hub mit Anwendungen und Chat-Oberfläche.',
   },
   {
@@ -222,30 +222,6 @@ export const home = {
     body: 'Zuraio verbindet Microsoft 365, SharePoint, Exchange und Teams ebenso wie CRM- und ERP-Systeme. MCP und REST-APIs ermöglichen flexible Anbindungen an weitere Unternehmenswerkzeuge.',
     link: 'Alle Integrationen ansehen →',
   },
-  demo: {
-    heading: 'Sehen Sie Zuraio bei der Arbeit.',
-    body: 'Zuraio stellt den relevanten Unternehmenskontext zusammen, bereitet die Arbeit vor und zeigt die verwendeten Quellen zur Prüfung an.',
-    caption:
-      'Zuraio kann eine Antwort an einen Kunden vorbereiten und dabei frühere Korrespondenz, aktuelle Dokumente und relevante Unternehmensinformationen berücksichtigen. Die Mitarbeitenden prüfen das Ergebnis und entscheiden über die nächsten Schritte.',
-    video: 'zuraio/assets/zuraio-demo.mp4',
-    poster: 'zuraio/assets/zuraio-demo-mail.png',
-    videoAlt:
-      'Zuraio E-Mail-Assistent mit vorbereitetem Antwortentwurf, Unternehmenskontext und sichtbaren Quellen.',
-    examples: [
-      {
-        label: 'Projektstatus',
-        prompt: 'Wie ist der aktuelle Stand von Projekt X und welche Aufgaben sind noch offen?',
-      },
-      {
-        label: 'Besprechungsvorbereitung',
-        prompt: 'Erstelle ein Briefing für das morgige Kundengespräch anhand der neuesten E-Mails, Dokumente und CRM-Informationen.',
-      },
-      {
-        label: 'Kundenkommunikation',
-        prompt: 'Entwirf eine Antwort an den Kunden auf Grundlage unserer freigegebenen Bedingungen und der bisherigen Korrespondenz.',
-      },
-    ],
-  },
   dataControl: {
     marker: 'Datenkontrolle',
     positioning:
@@ -362,7 +338,6 @@ export const home = {
     heading: 'Entdecken Sie, was Ihr eigener Assistent Ihnen abnehmen kann.',
     body: 'Gemeinsam betrachten wir Ihre bestehenden Tools, Ihr Unternehmenswissen und Ihre Anforderungen an die Datenkontrolle. Anschliessend zeigen wir Ihnen, wo Zuraio Ihr Unternehmen zuerst unterstützen kann.',
     primaryCta: 'Private Demo buchen',
-    secondaryCta: 'Zuraio bei der Arbeit sehen',
     supporting: 'Ihr Unternehmen. Ihre Informationen. Ihre Entscheidung.',
   },
 };

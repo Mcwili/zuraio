@@ -14,8 +14,6 @@ import { ALT_HOME_REASON_ICONS } from './alt-home-reason-icons.js';
 import { ROUTES_OUTCOME_CHECK } from './workflow-icons.js';
 import { renderSkillsSectorTabs, initSkillsSectorTabs } from './alt-skills-sector.js';
 
-const DEMO_CACHE = '20260805v2';
-
 const SPEECH_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
 
 function previewLocale() {
@@ -137,11 +135,6 @@ const HERO_REPLY_IMAGE_MOBILE = {
   },
 };
 
-function cacheBust(url) {
-  if (!url) return url;
-  return url.includes('?') ? url : `${url}?v=${DEMO_CACHE}`;
-}
-
 function initAltFaqMore() {
   const toggle = document.querySelector('[data-alt-faq-more]');
   const panel = document.querySelector('.alt-home-faq-more');
@@ -152,44 +145,6 @@ function initAltFaqMore() {
     panel.hidden = open;
     if (!open) initFaq();
   });
-}
-
-function initAltHomeDemoVideo() {
-  const videoEl = document.querySelector('.alt-home-demo [data-demo-video]');
-  if (!videoEl) return;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  const load = () => {
-    if (videoEl.dataset.loaded === 'true') return;
-    const raw = videoEl.dataset.src;
-    if (!raw) return;
-    videoEl.src = cacheBust(raw.startsWith('http') ? raw : assetHref('zuraio/assets/zuraio-demo.mp4'));
-    videoEl.dataset.loaded = 'true';
-  };
-
-  const tryPlay = () => {
-    if (reduceMotion.matches) {
-      videoEl.pause();
-      return;
-    }
-    videoEl.play().catch(() => {});
-  };
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          load();
-          tryPlay();
-        } else {
-          videoEl.pause();
-        }
-      });
-    },
-    { rootMargin: '200px 0px', threshold: 0.15 },
-  );
-  observer.observe(videoEl);
 }
 
 export function isAltHomeDevBuild() {
@@ -447,31 +402,6 @@ function renderMain(copy, locale, isDev) {
       </div>
     </section>
 
-    <section class="alt-section alt-section--paper demo" id="demo" aria-labelledby="alt-demo-h">
-      <div class="wrap">
-        <div class="alt-section-head">
-          <h2 id="alt-demo-h" class="alt-reveal">${copy.demo.heading}</h2>
-        </div>
-        <div class="demo-static alt-home-demo">
-          <div class="demo-static__frame alt-home-demo__frame">
-            <video
-              data-demo-video
-              data-src="zuraio/assets/zuraio-demo.mp4"
-              poster="${assetHref('zuraio/assets/zuraio-demo-mail.png')}"
-              width="1280"
-              height="720"
-              muted
-              loop
-              playsinline
-              controls
-              preload="none"
-            ></video>
-          </div>
-          <p class="demo-static__caption alt-home-demo__caption">${fmt(copy.demo?.caption ?? '', isDev, todos)}</p>
-        </div>
-      </div>
-    </section>
-
     <section class="alt-section" id="skills" aria-labelledby="alt-skills-h">
       <div class="wrap">
         <div class="alt-section-head alt-home-skills-head">
@@ -595,10 +525,6 @@ function bindAnalytics(heroVariant) {
     trackAltHome('it_factsheet_click', { variant: heroVariant });
   });
 
-  const video = document.querySelector('[data-demo-video]');
-  video?.addEventListener('play', () => {
-    trackAltHome('video_play', { variant: heroVariant });
-  }, { once: true });
 }
 
 export function bootAltHomepage() {
@@ -620,7 +546,6 @@ export function bootAltHomepage() {
   initAltFaqMore();
   initFaqFromHash();
   window.addEventListener('hashchange', initFaqFromHash);
-  initAltHomeDemoVideo();
   initControlParticles();
   initAltPreviewMarquee();
   bindAnalytics(heroVariant);

@@ -50,11 +50,6 @@ export const copyAltHome = {
         },
       ],
     },
-    demo: {
-      heading: 'So beantwortet Zuraio eine Kundenanfrage.',
-      caption:
-        'Zuraio entwirft die Antwort aus den letzten E-Mails, dem Vertrag und bexio, mit allen Quellen. Ihr Team entscheidet.',
-    },
     skills: {
       eyebrow: 'FÜR ARCHITEKTUR- UND INGENIEURBÜROS, TREUHÄNDER UND IMMOBILIENVERWALTUNGEN',
       eyebrowShort: 'FÜR ARCHITEKTEN, TREUHÄNDER UND VERWALTUNGEN',
@@ -212,11 +207,6 @@ export const copyAltHome = {
           body: 'Ready-made skills from day one. Then we build your own with your team.',
         },
       ],
-    },
-    demo: {
-      heading: 'Watch Zuraio answer a customer email.',
-      caption:
-        'Zuraio drafts the reply from the latest emails, the contract and bexio, with every source shown. Your team decides.',
     },
     skills: {
       eyebrow: 'FOR ARCHITECTURE AND ENGINEERING OFFICES, FIDUCIARIES AND PROPERTY MANAGERS',
@@ -376,11 +366,6 @@ export const copyAltHome = {
         },
       ],
     },
-    demo: {
-      heading: 'Voyez Zuraio répondre à l’e-mail d’un client.',
-      caption:
-        'Zuraio rédige la réponse à partir des derniers e-mails, du contrat et de bexio, avec toutes les sources. Votre équipe décide.',
-    },
     skills: {
       eyebrow: 'POUR LES BUREAUX D’ARCHITECTURE ET D’INGÉNIEURS, LES FIDUCIAIRES ET LES GÉRANCES IMMOBILIÈRES',
       eyebrowShort: 'POUR ARCHITECTES, FIDUCIAIRES ET GÉRANCES',
@@ -538,11 +523,6 @@ export const copyAltHome = {
           body: 'Skill pronte dal primo giorno. Poi sviluppiamo le vostre insieme al vostro team.',
         },
       ],
-    },
-    demo: {
-      heading: 'Guardate Zuraio rispondere all’e-mail di un cliente.',
-      caption:
-        'Zuraio prepara la risposta partendo dalle ultime e-mail, dal contratto e da bexio, con tutte le fonti. Il vostro team decide.',
     },
     skills: {
       eyebrow: 'PER STUDI DI ARCHITETTURA E D’INGEGNERIA, FIDUCIARIE E AMMINISTRAZIONI IMMOBILIARI',

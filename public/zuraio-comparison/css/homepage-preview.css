@@ -117,7 +117,6 @@ body[data-alt-chrome] main#alt-home-main #hero {
   background: var(--alt-tint);
 }
 
-body[data-alt-chrome] main#alt-home-main #demo,
 body[data-alt-chrome] main#alt-home-main #same-question,
 body[data-alt-chrome] main#alt-home-main #final {
   background: var(--paper);
@@ -127,7 +126,10 @@ body[data-alt-chrome] main#alt-home-main #faq {
   background: var(--alt-tint);
 }
 
-body[data-alt-chrome] main#alt-home-main #skills,
+body[data-alt-chrome] main#alt-home-main #skills {
+  background: var(--paper);
+}
+
 body[data-alt-chrome] main#alt-home-main #how-start {
   background: var(--alt-tint);
 }
@@ -141,7 +143,7 @@ body[data-alt-chrome] main#alt-home-main #skills.alt-section {
 }
 
 body[data-alt-chrome] main#alt-home-main #integrations.alt-section {
-  background: #fff;
+  background: var(--alt-tint);
   border-block: 1px solid var(--hairline);
   padding-block: 56px;
 }
@@ -895,30 +897,6 @@ body[data-alt-chrome] .alt-home-reasons-strip__body {
     border-left: 1px solid var(--hairline);
     padding-left: 40px;
   }
-}
-
-/* Demo */
-body[data-alt-chrome] .alt-home-demo {
-  margin: 0;
-}
-
-body[data-alt-chrome] .alt-home-demo__frame {
-  box-shadow: none;
-  max-width: 100%;
-  margin: 0;
-}
-
-body[data-alt-chrome] .alt-home-demo__caption {
-  margin: 12px 0 0;
-  font-size: var(--alt-body);
-  line-height: 1.55;
-  color: var(--charcoal-soft);
-  max-width: 60ch;
-  text-align: left;
-}
-
-body[data-alt-chrome] #demo.alt-section {
-  padding-bottom: var(--alt-head-gap);
 }
 
 /* Skills */
@@ -2497,15 +2475,6 @@ body[data-alt-chrome] .alt-todo-list__title {
     margin-top: 0.4rem;
   }
 
-  body[data-alt-chrome] #demo.alt-section {
-    padding-bottom: 40px;
-  }
-
-  body[data-alt-chrome] .alt-home-demo__caption {
-    margin-top: 8px;
-    line-height: 1.45;
-  }
-
   body[data-alt-chrome] #skills .alt-section-head .lede {
     line-height: 1.45;
   }
@@ -2723,10 +2692,6 @@ body[data-alt-chrome] .alt-todo-list__title {
 }
 
 @media (max-width: 767px) {
-  body[data-alt-chrome] main#alt-home-main #demo.alt-section {
-    display: none;
-  }
-
   body[data-alt-chrome] main#alt-home-main #hero.alt-section {
     padding-bottom: 0;
   }

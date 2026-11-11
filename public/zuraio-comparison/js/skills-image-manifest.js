@@ -128,5 +128,5 @@ export const SKILLS_IMAGE_MANIFEST = {
       }
     }
   },
-  "generatedAt": "2026-10-10T21:43:45.727Z"
+  "generatedAt": "2026-11-11T07:41:40.217Z"
 };
